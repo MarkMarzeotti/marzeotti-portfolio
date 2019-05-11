@@ -1,0 +1,43 @@
+///////////
+// FORMS //
+///////////
+
+.nf-form-wrap {
+
+	.nf-form-fields-required {
+		font-family: $font-secondary;
+		font-size: 12px;
+		margin-bottom: 20px;
+	}
+
+	.nf-field-label label {
+		font-family: $font-secondary;
+		font-size: 14px;
+		font-weight: 400;
+	}
+
+	.nf-field-element {
+
+		input:not([type=button]) {
+			border: 0;
+			border-bottom: 1px solid $color-grey;
+			box-shadow: 0;
+			padding: 0 0 10px;
+		}
+
+		textarea {
+			border: 1px solid $color-grey;
+			box-shadow: 0;
+			height: 100px;
+			padding: 10px;
+		}
+	}
+
+
+	nf-field:last-child {
+
+		.nf-field-container {
+			margin-bottom: 0;
+		}
+	}
+}
