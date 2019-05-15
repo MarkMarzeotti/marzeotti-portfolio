@@ -19,7 +19,7 @@ if ( ! function_exists( 'marzeotti_base_posted_on' ) ) :
 
     $time_string = sprintf( $time_string,
       esc_attr( get_the_date( 'c' ) ),
-      esc_html( get_the_date( 'n.j.y' ) )
+      esc_html( get_the_date( 'F j, Y' ) )
       // esc_attr( get_the_modified_date( 'c' ) ),
       // esc_html( get_the_modified_date() )
     );

@@ -28,7 +28,7 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="site tingle-content-wrapper">
-    <?php /*<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'marzeotti-base' ); ?></a>*/ ?>
+    <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'marzeotti-base' ); ?></a>
 
     <header id="masthead" class="site-header">
 
@@ -43,9 +43,10 @@
                         ?>
                         <img src="<?php echo $logo[0]; ?>" alt="<?php bloginfo( 'name' ); ?>">
                         <?php
-                    }
-                    ?>
-                    <span><?php bloginfo( 'name' ); ?></span>
+                    } else { ?>
+                        <span><?php bloginfo( 'name' ); ?></span>
+                        <?php
+                    } ?>
                 </a>
             </div><!-- .logo -->
 

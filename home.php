@@ -9,20 +9,36 @@
 
 get_header(); ?>
 
-    <div class="site-content">
-        <div class="content-inner">
+    <div class="site-content blog first-content">
+        <div class="medium-inner">
 
-            <div class="posts-area" data-equal-height>
+            <?php
+            while ( have_posts() ) : the_post(); ?>
 
+                <article id="post-<?php the_ID(); ?>" class="blog__item">
+                    <a href="<?php the_permalink(); ?>">
+                        <?php 
+                        $imageThumb = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full');
+                        if ($imageThumb[0]) {
+                            $image = $imageThumb[0];
+                        } else {
+                            $image = get_stylesheet_directory_uri() . '/assets/img/blog-placeholder.png';
+                        } ?>
+                        <img class="blog__image" src="<?php echo $image; ?>" alt="<?php the_title(); ?>" />
+
+                        <time class="blog__date" datetime="<?php the_time( 'c' ); ?>"><?php the_time( 'F j, Y' ); ?></time>
+                    
+                        <h2 class="blog__title"><?php the_title(); ?></h2>
+                    </a>
+                
+                    <div class="blog__content">
+                        <?php the_excerpt(); ?>
+                    </div>
+                </article>
+            
                 <?php
-                while ( have_posts() ) : the_post();
-
-                    get_template_part( 'template-parts/content' );
-
-                endwhile; // End of the loop.
-                ?>
-
-            </div>
+            endwhile; // End of the loop.
+            ?>
 
             <div class="content-area">
                 <a class="btn load-more-posts" href="#"><span>Load More</span></a>

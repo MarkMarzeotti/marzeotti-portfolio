@@ -11,8 +11,8 @@ get_header(); ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-    <div class="site-content">
-        <div class="content-inner">
+    <div class="site-content first-content">
+        <div class="small-inner">
 
             <div class="content-area single">
 

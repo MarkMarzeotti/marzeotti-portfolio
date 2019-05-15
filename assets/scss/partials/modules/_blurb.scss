@@ -1,0 +1,27 @@
+///////////
+// BLURB //
+///////////
+
+.blurb {
+	display: block;
+	float: left;
+	margin-bottom: 80px;
+	width: 100%;
+
+	@include grid-media($medium-screen-up) {
+		margin-bottom: 140px;
+	}
+
+	.blurb-inner {
+		@include boxed-grid-container;
+
+		.blurb-content {
+			@include grid-column(12);
+
+			@include grid-media($medium-screen-up) {
+				@include grid-column(10);
+				@include grid-shift(1);
+			}
+		}
+	}
+}

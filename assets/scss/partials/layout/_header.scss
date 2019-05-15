@@ -134,9 +134,12 @@
 
 			.navigation-menu {
 				@include position(fixed, 0 -80vw 0 null);
+				align-items: center;
 				background-color: $color-white;
 				box-shadow: 0;
 				box-sizing: border-box;
+				display: flex;
+				flex-flow: row wrap;
 				overflow: scroll;
 				padding: 80px 40px;
 				transition: all 300ms ease;
