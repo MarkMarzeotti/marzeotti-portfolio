@@ -13,32 +13,6 @@
 	}
 }
 
-.large-inner {
-	@include boxed-grid-container;
-	display: flex;
-	flex-flow: row wrap;
-	position: relative;
-	z-index: 1;
-}
-
-.medium-inner {
-	@include boxed-grid-container;
-	display: flex;
-	flex-flow: row wrap;
-	max-width: 1000px;
-	position: relative;
-	z-index: 1;
-}
-
-.small-inner {
-	@include boxed-grid-container;
-	display: flex;
-	flex-flow: row wrap;
-	max-width: 800px;
-	position: relative;
-	z-index: 1;
-}
-
 .content-inner {
 	@include boxed-grid-container;
 	position: relative;

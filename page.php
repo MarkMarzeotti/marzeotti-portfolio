@@ -12,9 +12,13 @@
  * @package Marzeotti_Base
  */
 
-get_header(); ?>
+get_header();
+    
+    while ( have_posts() ) : the_post();
+        the_content();
+    endwhile; ?>
 
-    <?php while ( have_posts() ) : the_post(); ?>
+    <?php /* while ( have_posts() ) : the_post(); ?>
     <div class="site-content content-blurb">
         <div class="content-inner">
 
@@ -26,7 +30,7 @@ get_header(); ?>
 
         </div><!-- .content-inner -->
     </div><!-- .site-content -->
-    <?php endwhile; // End of the loop. ?>
+    <?php endwhile; */ // End of the loop. ?>
 
 <?php
 get_footer();

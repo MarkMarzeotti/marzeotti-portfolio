@@ -81,6 +81,11 @@ if ( ! function_exists( 'marzeotti_base_setup' ) ) :
 			'flex-width'  => true,
 			'flex-height' => true,
 		) );
+
+		/**
+		 * Add support for wide and full width blocks.
+		 */
+		add_theme_support( 'align-wide' );
 	}
 endif;
 add_action( 'after_setup_theme', 'marzeotti_base_setup' );
@@ -143,6 +148,14 @@ function marzeotti_base_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'marzeotti_base_scripts' );
+
+/**
+ * Enqueue admin scripts and styles.
+ */
+function marzeotti_admin_scripts() {
+	wp_enqueue_style( 'editor-styles', get_template_directory_uri() . '/assets/css/editor.min.css' );
+}
+add_action( 'admin_enqueue_scripts', 'marzeotti_admin_scripts' );
 
 /**
  * Add additional file extensions.

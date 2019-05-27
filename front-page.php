@@ -31,6 +31,9 @@ get_header(); ?>
 	get_template_part( 'modules/buckets' ); ?>
 
 	<?php 
+	get_template_part( 'modules/work' ); ?>
+
+	<?php 
 	get_template_part( 'modules/map' ); ?>
 
 <?php
