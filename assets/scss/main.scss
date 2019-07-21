@@ -11,19 +11,16 @@
 @import 'partials/base/buttons';
 @import 'partials/base/global';
 
+@import 'partials/layout/blocks';
 @import 'partials/layout/header';
 @import 'partials/layout/footer';
 @import 'partials/layout/content';
 @import 'partials/layout/forms';
 @import 'partials/layout/modals';
 
-// @import 'partials/modules/hero';
-@import 'partials/modules/map';
-// included in blocks
-// @import 'partials/modules/blurb';
-// @import 'partials/modules/buckets';
-@import 'partials/modules/cta';
-@import 'partials/modules/work';
+// @import 'partials/modules/map';
+// @import 'partials/modules/cta';
+// @import 'partials/modules/work';
 
 @import 'partials/blog/posts';
 @import 'partials/blog/single';

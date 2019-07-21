@@ -12,11 +12,14 @@
  * @package Marzeotti_Base
  */
 
-get_header();
+get_header(); ?>
     
-    while ( have_posts() ) : the_post();
-        the_content();
-    endwhile; ?>
+    <div class="blocks">
+        <?php
+        while ( have_posts() ) : the_post();
+            the_content();
+        endwhile; ?>
+    </div>
 
     <?php /* while ( have_posts() ) : the_post(); ?>
     <div class="site-content content-blurb">
