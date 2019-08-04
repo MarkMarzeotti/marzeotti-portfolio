@@ -1,5 +1,18 @@
 .content {
 
+    &__blocks {
+
+        > div {
+            padding-bottom: 60px;
+            padding-top: 60px;
+
+            @include grid-media($medium-screen-grid) {
+                padding-bottom: 120px;
+                padding-top: 120px;
+            }
+        }
+    }
+
     &__main {
         @include grid-column(4);
 

@@ -1,0 +1,62 @@
+$font__primary: 'Tiemposheadline';
+$font__secondary: 'Graphik';
+
+@font-face {
+    font-family: 'Tiemposheadline';
+    src: url('../fonts/TiemposHeadline-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tiemposheadline';
+    src: url('../fonts/TiemposHeadline-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tiemposheadline';
+    src: url('../fonts/TiemposHeadline-Semibold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tiemposheadline';
+    src: url('../fonts/TiemposHeadline-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: url('../fonts/Graphik-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: url('../fonts/Graphik-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: url('../fonts/Graphik-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'icomoon';
+    src: url('../icomoon/fonts/icomoon.eot?8retop');
+    src: url('../icomoon/fonts/icomoon.eot?8retop#iefix') format('embedded-opentype'),
+        url('../icomoon/fonts/icomoon.ttf?8retop') format('truetype'),
+        url('../icomoon/fonts/icomoon.woff?8retop') format('woff'),
+        url('../icomoon/fonts/icomoon.svg?8retop#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

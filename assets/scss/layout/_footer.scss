@@ -1,18 +1,77 @@
 .footer {
+	padding: 30px 0 10px;
 
     &__copyright {
         @include grid-column(4);
+		text-align: left;
 
-        @include grid-media( $medium-screen-grid ) {
-            @include grid-column(6);
+        @include grid-media($medium-screen-grid) {
+            @include grid-column(4);
         }
+    }
+
+    &__social {
+        @include grid-column(4);
+		text-align: center;
+
+        @include grid-media($medium-screen-grid) {
+            @include grid-column(4);
+			margin-top: -4px;
+        }
+
+		ul {
+			margin: 0;
+			padding: 0;
+
+			li {
+				display: inline-block;
+				font-size: 20px;
+				margin: 0 10px;
+
+				a {
+                    color: $color__mine-shaft;
+					padding: 10px;
+					text-decoration: none;
+					transition: color 200ms ease;
+
+					&:hover {
+						color: $color__allports;
+					}
+				}
+
+				span {
+					@include position(absolute, -9999px null null -9999px);
+					display: block;
+				}
+			}
+		}
     }
 
     &__nav {
         @include grid-column(4);
+		text-align: left;
 
-        @include grid-media( $medium-screen-grid ) {
-            @include grid-column(6);
+        @include grid-media($medium-screen-grid) {
+            @include grid-column(4);
+			text-align: right;
         }
+
+		ul {
+			float: right;
+			margin: 0;
+
+			li {
+				display: inline-block;
+				margin-left: 20px;
+
+				a {
+					transition: color 200ms ease;
+
+					&:hover {
+						color: $color__allports;
+					}
+				}
+			}
+		}
     }
 }
