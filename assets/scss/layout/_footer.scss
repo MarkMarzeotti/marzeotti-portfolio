@@ -1,21 +1,26 @@
 .footer {
-	padding: 30px 0 10px;
+	padding: 30px 0 20px;
 
     &__copyright {
-        @include grid-column(4);
-		text-align: left;
+		@include grid-column(4);
+		margin-bottom: 20px;
+		text-align: center;
 
         @include grid-media($medium-screen-grid) {
             @include grid-column(4);
+			margin-bottom: 0;
+			text-align: left;
         }
     }
 
     &__social {
         @include grid-column(4);
+		margin-bottom: 20px;
 		text-align: center;
 
         @include grid-media($medium-screen-grid) {
             @include grid-column(4);
+			margin-bottom: 0;
 			margin-top: -4px;
         }
 
@@ -49,7 +54,7 @@
 
     &__nav {
         @include grid-column(4);
-		text-align: left;
+		text-align: center;
 
         @include grid-media($medium-screen-grid) {
             @include grid-column(4);
@@ -57,8 +62,12 @@
         }
 
 		ul {
-			float: right;
 			margin: 0;
+			padding-right: 20px;
+
+			@include grid-media($medium-screen-grid) {
+				padding-right: 0;
+			}
 
 			li {
 				display: inline-block;

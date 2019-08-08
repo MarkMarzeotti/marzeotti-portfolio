@@ -107,6 +107,7 @@ li {
 	font-family: $font__secondary;
 	font-size: 16px;
 	line-height: 1.8;
+	margin-bottom: 12px;
 	margin-top: 0;
 
 	@include grid-media($medium-screen-grid) {
@@ -140,18 +141,17 @@ hr {
 	}
 }
 
-.body-large {
-
-	p,
-	li {
-		font-size: 18px;
-		line-height: 24px;
-	}
-}
-
 input,
 textarea {
 	font-family: $font__secondary;
 	font-size: 16px;
 	font-weight: 400;
+}
+    
+.posted-on,
+.byline {
+	font-family: $font__secondary;
+	font-size: 16px;
+	font-weight: 400;
+	color: $color__mine-shaft;
 }

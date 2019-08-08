@@ -141,6 +141,10 @@
         }
     }
 
+    &__item {
+        margin-bottom: 0;
+    }
+
     &.toggled {
 
         .nav__container--primary-menu {
