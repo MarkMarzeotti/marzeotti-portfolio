@@ -1,4 +1,5 @@
-.content__blocks {
+.content__blocks,
+.content__single {
 
     .wp-block-portfolio-hero {
         padding: 0;
@@ -208,14 +209,27 @@
 
         &__content {
             flex-grow: 1;
+            position: relative;
             padding: 23px 0 0;
 
             h3 {
                 margin-bottom: 20px;
+                padding-right: 100px;
 	
                 a {
                     color: $color__mine-shaft;
                     text-decoration: none;
+                }
+            }
+
+            .agency-logo {
+                @include position(absolute, 20px 20px null null);
+                height: 50px;
+                width: 50px;
+
+                img {
+                    height: auto;
+                    width: 100%;
                 }
             }
 
@@ -258,5 +272,9 @@
                 margin-top: 320px;
             }
         }
+    }
+
+    .wp-block-code {
+        margin: 40px 0;
     }
 }

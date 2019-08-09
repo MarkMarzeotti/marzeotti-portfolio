@@ -58,7 +58,7 @@
     }
 
     &__single {
-        padding-top: 200px;
+        padding-top: 120px;
 
         > article {
             margin-left: auto;
@@ -68,6 +68,10 @@
     
             @include grid-media($medium-screen-grid) {
                 padding: 0 40px 120px;
+            }
+
+            header {
+                margin-bottom: 60px;
             }
         }
     }
