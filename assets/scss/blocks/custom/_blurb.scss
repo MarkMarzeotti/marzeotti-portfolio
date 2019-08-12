@@ -1,0 +1,17 @@
+.content__blocks,
+.content__single {
+
+    .wp-block-portfolio-blurb {
+
+        .blurb {
+            box-sizing: border-box;
+            margin: 0 auto;
+            max-width: 1200px;
+            padding: 0 20px;
+
+            @include grid-media($medium-screen-grid) {
+                padding: 0 calc(10% + 40px) 0 40px;
+            }
+        }
+    }
+}

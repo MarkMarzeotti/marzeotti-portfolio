@@ -1,0 +1,124 @@
+.content__blocks,
+.content__single {
+
+    .archive-content {
+        box-sizing: border-box;
+        margin: 0 auto;
+        max-width: 1200px;
+        padding-left: 20px;
+        padding-right: 20px;
+
+        @include grid-media($medium-screen-grid) {
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+
+        &__posts {
+            
+            &.column {
+                display: flex;
+                flex-flow: row wrap;
+
+                .archive-content__item {
+                    margin-right: 40px;
+                    width: calc(50% - 20px);
+
+                    &:nth-child(even) {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+
+        &__item {
+            display: flex;
+            flex-flow: row wrap;
+            margin-bottom: 80px;
+
+            @include grid-media($medium-screen-grid) {
+                flex-flow: row nowrap;
+
+                &:hover {
+
+                    .archive-content__image {
+                        padding: 0 0 8px;
+
+                        img {
+                            box-shadow: $shadow;
+                        }
+                    }
+                }
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        &__image {
+            flex-grow: 0;
+            flex-shrink: 0;
+            padding: 8px 0 0;
+            transition: padding 300ms ease;
+            width: 100%;
+
+            @include grid-media($medium-screen-grid) {
+                margin-right: 40px;
+                width: 300px;
+            }
+
+            a {
+                display: block;
+                width: 100%;
+            }
+
+            img {
+                box-shadow: 0;
+                display: block;
+                height: auto;
+                margin-bottom: 30px;
+                transition: box-shadow 300ms ease;
+                width: 100%;
+
+                @include grid-media($medium-screen-grid) {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        &__content {
+            flex-grow: 1;
+            position: relative;
+            padding: 23px 0 0;
+
+            h2 {
+                margin-bottom: 20px;
+                padding-right: 100px;
+
+                a {
+                    color: $color__mine-shaft;
+                    text-decoration: none;
+                }
+            }
+
+            .agency-logo {
+                @include position(absolute, 20px 20px null null);
+                height: 50px;
+                width: 50px;
+
+                img {
+                    height: auto;
+                    width: 100%;
+                }
+            }
+
+            p {
+                margin-bottom: 30px;
+            }
+        }
+
+        &__button {
+            @extend .btn;
+        }
+    }
+}

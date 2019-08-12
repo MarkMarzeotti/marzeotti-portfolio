@@ -1,3 +1,67 @@
 .modals {
     display: none;
 }
+
+.tingle-modal {
+    background: rgba($color__white, .5);
+    z-index: 90;
+
+    .tingle-modal-box {
+        box-shadow: $shadow;
+
+        .modal-close {
+            @include position(absolute, 20px 20px null null);
+            appearance: none;
+            background-color: transparent;
+            border: 4px solid $color__white;
+            border-radius: 10px;
+            cursor: pointer;
+            height: 12px;
+            margin-top: 15px;
+            outline: none;
+            text-indent: -9999px;
+            width: 38px;
+            z-index: 100;
+    
+            &:before,
+            &:after {
+                background-color: $color__mine-shaft;
+                border: 4px solid $color__white;
+                border-radius: 6px;
+                cursor: pointer;
+                content: '';
+                height: 4px;
+                outline: none;
+                position: absolute;
+                right: -4px;
+                transition: all 300ms ease;
+                width: 100%;
+            }
+
+            &::before {
+                top: -4px;
+                transform: rotate(45deg);
+            }
+
+            &::after {
+                bottom: -4px;
+                transform: rotate(-45deg);
+            }
+
+            + * {
+                padding-right: 20px;
+            }
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+    }
+
+    &.small-modal {
+
+        .tingle-modal-box {
+            max-width: 400px;
+        }
+    }
+}

@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-	<main id="main" class="content__blocks">
+	<main id="main" class="content__blocks page">
 
 		<?php
 		while ( have_posts() ) : the_post();
@@ -21,7 +21,6 @@ get_header();
 		?>
 
 	</main>
-	<?php get_sidebar(); ?>
 
 <?php
 get_footer();

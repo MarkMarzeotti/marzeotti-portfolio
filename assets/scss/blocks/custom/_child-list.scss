@@ -1,0 +1,81 @@
+.content__blocks,
+.content__single {
+
+    .child-list {
+        box-sizing: border-box;
+        margin: 0 auto;
+        max-width: 1200px;
+        padding-left: 20px;
+        padding-right: 20px;
+
+        @include grid-media($medium-screen-grid) {
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+
+        &__posts {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        &__item {
+            box-shadow: 0;
+            box-sizing: border-box;
+            display: flex;
+            flex-basis: 100%;
+            flex-flow: row wrap;
+            text-align: center;
+            transition: box-shadow 300ms ease;
+
+            @include grid-media($medium-screen-grid) {
+                flex-basis: 50%;
+
+                &:hover {
+
+                    .child-list__item {
+                        box-shadow: $shadow;
+                    }
+                }
+            
+                &:nth-child(even) {
+                    border-left: 1px solid rgba($color__mine-shaft, .2);
+                }
+            
+                &:nth-child(n + 3) {
+                    border-top: 1px solid rgba($color__mine-shaft, .2);
+                }
+
+                &:last-child {
+                    flex-grow: 2;
+                }
+            }
+        }
+
+        &__content {
+            flex-grow: 1;
+            padding: 100px 0 0 0;
+            position: relative;
+
+            h2 {
+                margin: 0;
+
+                a {
+                    @include position(absolute, 0 0 0 0);
+                    box-sizing: border-box;
+                    color: $color__mine-shaft;
+                    display: block;
+                    margin: 0;
+                    padding: 60px 20px;
+                    text-decoration: none;
+                    width: 100%;
+                }
+            }
+
+            p {
+                margin: 0 auto;
+                max-width: 80%;
+                padding: 30px 40px 60px;
+            }
+        }
+    }
+}

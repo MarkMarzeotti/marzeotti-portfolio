@@ -14,7 +14,7 @@
         text-indent: -9999px;
         transition: all 300ms ease;
         width: 38px;
-        z-index: 100;
+        z-index: 60;
 
         &:before,
         &:after {
@@ -119,7 +119,7 @@
         &--button-menu {
             @include position(fixed, 20px null null 120%);
             transition: left 300ms ease;
-            z-index: 100;
+            z-index: 60;
 
             @include grid-media($medium-screen-grid) {
                 @include position(relative, auto null null auto);

@@ -7,6 +7,12 @@
  * @package Marzeotti_Base
  */
 
+if ( empty( $post->post_content ) ) {
+	$url = esc_url( home_url( '/work/' ) );
+	wp_redirect( $url );
+	exit;
+}
+
 get_header();
 ?>
 

@@ -12,6 +12,12 @@ get_header();
 
 	<main id="main" class="content__single">
 
+		<?php
+		if ( function_exists('yoast_breadcrumb') ) {
+			yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
+		}
+		?>
+
 		<?php while ( have_posts() ) : the_post(); ?>
 
 			<article id="post-<?php the_ID(); ?>">
@@ -23,7 +29,7 @@ get_header();
 						the_title( '<h2><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 					endif;
 			
-					if ( 'post' === get_post_type() ) :
+					if ( 'post' === get_post_type() || 'talk' === get_post_type() ) :
 						?>
 						<div>
 							<?php

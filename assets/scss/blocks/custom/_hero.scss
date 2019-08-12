@@ -1,0 +1,41 @@
+.content__blocks,
+.content__single {
+
+    .wp-block-portfolio-hero {
+        padding: 0;
+
+        .hero {
+            box-sizing: border-box;
+            margin: 0 auto;
+            max-width: 1200px;
+            padding: 60px 20px 40px;
+
+            @include grid-media($medium-screen-grid) {
+                align-items: center;
+                display: flex;
+                height: calc(100vh - 240px);
+                padding: 0 calc(10% + 40px) 0 40px;
+            }
+
+            p {
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 1.4;
+                margin-bottom: 12px;
+            
+                @include grid-media($medium-screen-grid) {
+                    font-size: 24px;
+                    margin-bottom: 20px;
+                }
+            }
+        }
+
+        .ranking {
+            width: 100%;
+        }
+
+        .wp-block-button {
+            display: inline-block;
+        }
+    }
+}

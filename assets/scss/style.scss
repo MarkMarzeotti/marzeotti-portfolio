@@ -1,5 +1,6 @@
 @import 'vendors/bourbon/bourbon';
 @import 'vendors/neat/neat';
+@import '~tingle.js/dist/tingle.min.css';
 
 * {
 	margin: 0;
@@ -9,5 +10,6 @@
 @import 'helpers/glob';
 @import 'base/glob';
 @import 'layout/glob';
+@import 'blocks/glob';
 @import 'modules/glob';
 @import 'templates/glob';

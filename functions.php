@@ -26,11 +26,18 @@ function marzeotti_portfolio_setup() {
 add_action( 'after_setup_theme', 'marzeotti_portfolio_setup' );
 
 /**
+ * Allow the excerpt field to show on pages.
+ */
+function marzeotti_portfolio_allow_excerpt() {
+    add_post_type_support( 'page', 'excerpt' );
+}
+add_action( 'init', 'marzeotti_portfolio_allow_excerpt' );
+
+/**
  * Enqueue scripts and styles.
  */
 function marzeotti_portfolio_scripts() {
 	wp_enqueue_style( 'marzeotti-portfolio-style', get_stylesheet_directory_uri() . '/dist/css/style.css' );
-
 	wp_enqueue_script( 'marzeotti-portfolio-script', get_stylesheet_directory_uri() . '/dist/js/bundle.js', array( 'jquery' ), '20151215', true );
 }
 add_action( 'wp_enqueue_scripts', 'marzeotti_portfolio_scripts' );
@@ -55,6 +62,15 @@ function marzeotti_portfolio_post_types( $post_types ) {
 			'name_singular' => 'Work', 
 			'name_plural'   => 'Work', 
 			'icon'          => 'dashicons-editor-code',
+			'taxonomies'    => array(),
+			'has_archive'   => false 
+		),
+		array( 
+			'slug'          => 'modal', 
+			'url_base'      => 'modals', 
+			'name_singular' => 'Modal', 
+			'name_plural'   => 'Modals', 
+			'icon'          => 'dashicons-editor-expand',
 			'taxonomies'    => array(),
 			'has_archive'   => false 
 		)
@@ -93,19 +109,10 @@ function marzeotti_base_posted_by() {
 }
 
 /**
- * Adds optimal image sizes for sharing on Facebook and Twitter.
- */
-function marzeotti_portfolio_add_share_image_sizes() {
-	add_image_size( 'facebook-share', 1200, 630, true );
-	add_image_size( 'twitter-share', 1024, 512, true );
-}
-add_action( 'after_setup_theme', 'marzeotti_portfolio_add_share_image_sizes' );
-
-/**
  * Sets image size for Yoast to use for Facebook shares.
  */
 function marzeotti_portfolio_set_yoast_facebook_share_image_size() {
-	return 'facebook-share';
+	return 'share-facebook';
 }
 add_filter( 'wpseo_opengraph_image_size', 'marzeotti_portfolio_set_yoast_facebook_share_image_size' );
 
@@ -113,7 +120,7 @@ add_filter( 'wpseo_opengraph_image_size', 'marzeotti_portfolio_set_yoast_faceboo
  * Sets image size for Yoast to use for Twitter shares.
  */
 function marzeotti_portfolio_set_yoast_twitter_share_image_size() {
-	return 'twitter-share';
+	return 'share-twitter';
 }
 add_filter( 'wpseo_twitter_image_size', 'marzeotti_portfolio_set_yoast_twitter_share_image_size' );
 
@@ -132,3 +139,69 @@ function marzeotti_portfolio_archive_content_after_title() {
 	return $content;
 }
 add_filter( 'archive_content_after_title', 'marzeotti_portfolio_archive_content_after_title' );
+
+/**
+ * Add post type archive page to Yoast breadcrumbs.
+ */
+function marzeotti_portfolio_change_yoast_breadcrumbs( $breadcrumbs ) {
+
+	$last_item = array_pop( $breadcrumbs );
+	$post_type = get_post_type( $last_item['id'] );
+
+	switch ( $post_type ) {
+		case 'talk':
+			$parent_breadcrumb = array(
+				array(
+					'text' => 'Talks',
+					'url' => home_url( '/' ) . 'talks/',
+					'allow_html' => 1
+				),
+				$last_item
+			);
+			break;
+		case 'work':
+			$parent_breadcrumb = array(
+				array(
+					'text' => 'Work',
+					'url' => home_url( '/' ) . 'work/',
+					'allow_html' => 1
+				),
+				$last_item
+			);
+			break;
+		case 'post':
+			$parent_breadcrumb = array(
+				array(
+					'text' => 'Snippets',
+					'url' => home_url( '/' ) . 'snippets/',
+					'allow_html' => 1
+				),
+				$last_item
+			);
+			break;
+		default:
+			$parent_breadcrumb = array( $last_item );
+			break;
+	}
+
+	$breadcrumbs = array_merge( $breadcrumbs, $parent_breadcrumb );
+
+	return $breadcrumbs;
+}
+add_filter( 'wpseo_breadcrumb_links', 'marzeotti_portfolio_change_yoast_breadcrumbs' );
+
+/**
+ * Conditionally change archive content block post link.
+ */
+function marzeotti_portfolio_modify_archive_content_post_link( $post_permalink ) {
+	$post_id = url_to_postid( $post_permalink );
+	$post_content = get_the_content( $post_id );
+	$project_url = get_field( 'project_url', $post_id );
+
+	if ( empty( $post_content ) && ! empty( $project_url ) ) {
+		$post_permalink = $project_url;
+	}
+	
+	return $post_permalink;
+}
+add_filter( 'archive_content_post_link', 'marzeotti_portfolio_modify_archive_content_post_link' );

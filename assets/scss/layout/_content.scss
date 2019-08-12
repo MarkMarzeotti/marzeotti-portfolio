@@ -21,7 +21,7 @@
         > h6,
         > ul,
         > blockquote {
-            max-width: 1200px;
+            max-width: 1000px;
 
             + div {
                 margin-top: 90px;
@@ -94,7 +94,8 @@
             padding: 0 20px;
     
             @include grid-media($medium-screen-grid) {
-                padding: 0 calc(10% + 40px) 0 40px;
+                // padding: 0 calc(10% + 40px) 0 40px;
+                padding: 0 40px;
             }
         }
 
@@ -129,12 +130,33 @@
                 margin-top: 30px;
             }
         }
+
+        figure {
+            margin: 30px 0;
+        }
+
+        img {
+            height: auto;
+            max-width: 100%;
+        }
     
         > *:last-child {
             padding-bottom: 90px;
     
             @include grid-media($medium-screen-grid) {
                 padding-bottom: 120px;
+            }
+        }
+
+        #breadcrumbs {
+            box-sizing: content-box;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 800px;
+            padding: 0 20px 60px;
+    
+            @include grid-media($medium-screen-grid) {
+                padding: 0 40px 20px;
             }
         }
     }
