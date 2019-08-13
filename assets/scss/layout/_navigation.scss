@@ -81,6 +81,7 @@
                 li {
                     display: block;
                     float: left;
+                    position: relative;
                     width: 100%;
 
                     @include grid-media($medium-screen-grid) {
@@ -89,6 +90,10 @@
 
                             a {
                                 padding-left: 10px;
+
+                                &::before {
+                                    background-color: $color__mine-shaft;
+                                }
                             }
                         }
                     }
@@ -110,6 +115,21 @@
 
                         @include grid-media($medium-screen-grid) {
                             padding-left: 30px;
+                        }
+
+                        &::before {
+                            @include position(absolute, 0 null 0 -40px);
+                            background-color: transparent;
+                            content: '';
+                            transition: background-color 300ms ease;
+                            width: 4px;
+                        }
+                    }
+
+                    &.nav__item--is-current {
+
+                        a::before {
+                            background-color: $color__mine-shaft;
                         }
                     }
                 }

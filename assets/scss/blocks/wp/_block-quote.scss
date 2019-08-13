@@ -9,11 +9,11 @@
         p {
             color: $color__mine-shaft;
             font-family: $font__secondary;
-            font-size: 32px;
+            font-size: 24px;
             line-height: 1.6;
 
             @include grid-media($medium-screen-grid) {
-                font-size: 40px;
+                font-size: 32px;
             }
         }
 
@@ -30,7 +30,7 @@
     .wp-block-quote {
 
         &::before {
-            @include position(absolute, 10px null null -60px);
+            @include position(absolute, 0 null null -60px);
             color: rgba($color__mine-shaft, .6);
             content: '\201C';
             font-family: $font__primary;
