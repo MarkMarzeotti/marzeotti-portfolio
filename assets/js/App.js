@@ -2,7 +2,7 @@
 import '../scss/style.scss';
 import '../scss/admin.scss';
 
-import './wp/navigation';
-import './wp/skip-link-focus-fix';
-
-import './script';
+import './partials/navigation';
+import './partials/skip-link-focus-fix';
+import './partials/modals';
+import './partials/maps';

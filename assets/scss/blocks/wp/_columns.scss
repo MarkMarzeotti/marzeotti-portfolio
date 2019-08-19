@@ -22,7 +22,7 @@
             @include grid-media($medium-screen-grid) {
                 flex-basis: 0;
                 flex-grow: 1;
-                margin-right: 30px;
+                margin-right: 60px;
 
                 &:last-child {
                     margin-right: 0;

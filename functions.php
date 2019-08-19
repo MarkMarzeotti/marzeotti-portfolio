@@ -34,15 +34,6 @@ function marzeotti_portfolio_allow_excerpt() {
 add_action( 'init', 'marzeotti_portfolio_allow_excerpt' );
 
 /**
- * Enqueue scripts and styles.
- */
-function marzeotti_portfolio_scripts() {
-	wp_enqueue_style( 'marzeotti-portfolio-style', get_stylesheet_directory_uri() . '/dist/css/style.css' );
-	wp_enqueue_script( 'marzeotti-portfolio-script', get_stylesheet_directory_uri() . '/dist/js/bundle.js', array( 'jquery' ), '20151215', true );
-}
-add_action( 'wp_enqueue_scripts', 'marzeotti_portfolio_scripts' );
-
-/**
  * Add custom post types.
  */
 function marzeotti_portfolio_post_types( $post_types ) {
@@ -133,7 +124,7 @@ function marzeotti_portfolio_archive_content_after_title() {
 	if ( ! empty( $terms ) ) {
 		foreach ( $terms as $term ) {
 			$agency_logo_id = get_field( 'logo', $term );
-			$content .= '<span class="agency-logo">' . wp_get_attachment_image( $agency_logo_id, 'thumbnail', false, array( 'alt' => $term->name . ' logo', 'title' => 'This project was completed for ' . $term->name . '.' ) ) . '</span>';
+			$content .= '<span class="agency-logo" aria-label="This project was completed for ' . $term->name . '.">' . wp_get_attachment_image( $agency_logo_id, 'thumbnail', false, array( 'alt' => $term->name . ' logo' ) ) . '</span>';
 		}
 	}
 	return $content;
@@ -205,3 +196,13 @@ function marzeotti_portfolio_modify_archive_content_post_link( $post_permalink )
 	return $post_permalink;
 }
 add_filter( 'archive_content_post_link', 'marzeotti_portfolio_modify_archive_content_post_link' );
+
+/**
+ * Move jQuery to footer.
+ */
+function marzeotti_portfolio_jquery_in_footer() {
+    wp_deregister_script( 'jquery' );
+    wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, NULL, true );
+    wp_enqueue_script( 'jquery' );
+}
+add_action( 'wp_enqueue_scripts', 'marzeotti_portfolio_jquery_in_footer' );

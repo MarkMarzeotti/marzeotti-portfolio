@@ -24,7 +24,7 @@ input[type=button],
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
-	transition: all 300ms ease;
+	transition: box-shadow 300ms ease, color 300ms ease;
 
 	&:hover {
 		box-shadow: $shadow-hover;

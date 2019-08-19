@@ -3,6 +3,20 @@ body {
 	div:not(.tingle-modal) {
 		z-index: 0;
 	}
+
+	&.noscroll {
+		margin: 0;
+		height: 100%;
+		overflow: hidden;
+
+		* {
+			pointer-events: none;
+		}
+
+		.header__nav * {
+			pointer-events: all;
+		}
+	}
 }
 
 .container {

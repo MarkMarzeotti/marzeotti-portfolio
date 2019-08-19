@@ -25,11 +25,19 @@ module.exports = {
 			host: 'localhost',
 			port: 3000,
 			proxy: 'http://localhost',
-		})
+		}),
 	],
 	devtool: 'source-map',
 	module: {
 		rules: [
+			{
+				test: /\.woff2$/,
+				exclude: /(node_modules)/,
+				loader: 'url-loader?limit=10000&mimetype=application/font-woff2',
+				options: {
+					name: 'dist/fonts/[name].[ext]',
+				},
+			},
 			{
 				test: /\.woff$/,
 				exclude: /(node_modules)/,

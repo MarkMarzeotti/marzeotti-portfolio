@@ -3,7 +3,6 @@ const tingle = require( 'tingle.js' );
 ( function( $ ) {
 	$( document ).ready( () => {
 
-		// instanciate new modal
 		let contentLocation,
 			content,
 			modal = new tingle.modal( {

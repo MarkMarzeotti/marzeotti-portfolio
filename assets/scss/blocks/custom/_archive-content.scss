@@ -22,8 +22,12 @@
                     flex-flow: row wrap;
 
                     .archive-content__item {
-                        margin-right: 40px;
-                        width: calc(50% - 20px);
+                        width: 100%;
+
+                        @include grid-media($medium-screen-grid) {
+                            margin-right: 40px;
+                            width: calc(50% - 20px);
+                        }
 
                         &:nth-child(even) {
                             margin-right: 0;
@@ -111,6 +115,27 @@
                     img {
                         height: auto;
                         width: 100%;
+                    }
+
+                    &[aria-label]:hover::after {
+                        @include position(absolute, null 50% calc(100% + 10px) null);
+                        background-color: $color__mine-shaft;
+                        border-radius: 6px;
+                        color: $color__white;
+                        content: attr(aria-label);
+                        font-family: $font__secondary;
+                        font-size: 14px;
+                        padding: 10px 16px;
+                        width: 170px;
+                    }
+
+                    &[aria-label]:hover::before {
+                        @include position(absolute, null 50% calc(100% + 4px) null);
+                        border: 10px solid transparent;
+                        border-right: 16px solid $color__mine-shaft;
+                        content: '';
+                        height: 0;
+                        width: 0;
                     }
                 }
 

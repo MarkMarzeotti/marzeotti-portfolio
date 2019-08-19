@@ -7,6 +7,19 @@
  * @package Marzeotti_Base
  */
 
+$post_type = get_post_type( $post );
+$allowed_post_types = array(
+	'talk',
+	'work',
+	'post'
+);
+
+if ( ! in_array( $post_type, $allowed_post_types ) ) {
+	$url = esc_url( home_url( '/' ) );
+	wp_redirect( $url );
+	exit;
+}
+
 get_header();
 ?>
 

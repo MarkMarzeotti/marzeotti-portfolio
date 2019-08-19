@@ -12,7 +12,7 @@
         outline: none;
         position: relative;
         text-indent: -9999px;
-        transition: all 300ms ease;
+        transition: background-color 300ms ease;
         width: 38px;
         z-index: 60;
 
@@ -26,7 +26,11 @@
             height: 4px;
             outline: none;
             position: absolute;
-            transition: all 300ms ease;
+            transition: top 300ms ease,
+                right 300ms ease,
+                bottom 300ms ease,
+                left 300ms ease,
+                transform 300ms ease;
         }
 
         &::before {
@@ -62,7 +66,8 @@
             flex-flow: row wrap;
             overflow: scroll;
             padding: 100px 40px 40px;
-            transition: all 300ms ease;
+            transition: right 300ms ease,
+                box-shadow 300ms ease;
             width: 80vw;
             z-index: 50;
 
@@ -110,7 +115,7 @@
                         padding-left: 0;
                         padding-top: 10px;
                         text-decoration: none;
-                        transition: all 300ms ease;
+                        transition: padding-left 300ms ease;
                         width: 100%;
 
                         @include grid-media($medium-screen-grid) {
