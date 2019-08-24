@@ -60,6 +60,7 @@
 			<ul>
 				<li><a class="icon-twitter" href="https://twitter.com/MarkMarzeotti" target="_blank"><span>Twitter</span></a></li>
 				<li><a class="icon-instagram" href="https://www.instagram.com/MarkMarzeotti/" target="_blank"><span>Instagram</span></a></li>
+				<li><a class="icon-linkedin" href="https://www.linkedin.com/in/markmarzeotti/" target="_blank"><span>LinkedIn</span></a></li>
 				<li><a class="icon-github" href="https://github.com/MarkMarzeotti" target="_blank"><span>Github</span></a></li>
 			</ul>
 		</div>
