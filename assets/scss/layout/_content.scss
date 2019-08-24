@@ -153,7 +153,7 @@
             margin-left: auto;
             margin-right: auto;
             max-width: 800px;
-            padding: 0 20px 60px;
+            padding: 0 20px 20px;
     
             @include grid-media($medium-screen-grid) {
                 padding: 0 40px 20px;

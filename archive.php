@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package Marzeotti_Base
+ * @package Marzeotti_Portfolio
  */
 
 $taxonomy = get_query_var( 'taxonomy' );

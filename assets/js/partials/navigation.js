@@ -7,6 +7,17 @@
 ( function() {
 	var container, button, menu, links, i, len;
 
+	var navigationOverlay = document.createElement( 'div' );
+	navigationOverlay.className = 'navigation-overlay';
+			
+	navigationOverlay.onclick = function() {
+		document.body.removeChild( navigationOverlay ); 
+		document.body.classList.remove( 'noscroll' );
+		container.className = container.className.replace( ' toggled', '' );
+		button.setAttribute( 'aria-expanded', 'false' );
+		menu.setAttribute( 'aria-expanded', 'false' );
+	};
+
 	container = document.getElementById( 'site-navigation' );
 	if ( ! container ) {
 		return;
@@ -32,15 +43,17 @@
 
 	button.onclick = function() {
 		if ( -1 !== container.className.indexOf( 'toggled' ) ) {
+			document.body.removeChild( navigationOverlay ); 
             document.body.classList.remove( 'noscroll' );
 			container.className = container.className.replace( ' toggled', '' );
 			button.setAttribute( 'aria-expanded', 'false' );
 			menu.setAttribute( 'aria-expanded', 'false' );
 		} else {
-            document.body.classList.add( 'noscroll' );
+			document.body.appendChild( navigationOverlay );
+			document.body.classList.add( 'noscroll' );
 			container.className += ' toggled';
 			button.setAttribute( 'aria-expanded', 'true' );
-            menu.setAttribute( 'aria-expanded', 'true' );
+			menu.setAttribute( 'aria-expanded', 'true' );
 		}
     };
 

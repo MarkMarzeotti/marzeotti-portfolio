@@ -110,6 +110,17 @@ __webpack_require__(7);
 (function () {
 	var container, button, menu, links, i, len;
 
+	var navigationOverlay = document.createElement('div');
+	navigationOverlay.className = 'navigation-overlay';
+
+	navigationOverlay.onclick = function () {
+		document.body.removeChild(navigationOverlay);
+		document.body.classList.remove('noscroll');
+		container.className = container.className.replace(' toggled', '');
+		button.setAttribute('aria-expanded', 'false');
+		menu.setAttribute('aria-expanded', 'false');
+	};
+
 	container = document.getElementById('site-navigation');
 	if (!container) {
 		return;
@@ -135,11 +146,13 @@ __webpack_require__(7);
 
 	button.onclick = function () {
 		if (-1 !== container.className.indexOf('toggled')) {
+			document.body.removeChild(navigationOverlay);
 			document.body.classList.remove('noscroll');
 			container.className = container.className.replace(' toggled', '');
 			button.setAttribute('aria-expanded', 'false');
 			menu.setAttribute('aria-expanded', 'false');
 		} else {
+			document.body.appendChild(navigationOverlay);
 			document.body.classList.add('noscroll');
 			container.className += ' toggled';
 			button.setAttribute('aria-expanded', 'true');

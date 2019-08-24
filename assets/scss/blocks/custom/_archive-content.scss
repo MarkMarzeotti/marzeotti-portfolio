@@ -108,9 +108,13 @@
                 }
 
                 .agency-logo {
-                    @include position(absolute, 20px 20px null null);
+                    @include position(absolute, 10px 20px null null);
                     height: 50px;
                     width: 50px;
+
+                    @include grid-media($medium-screen-grid) {
+                        top: 15px;
+                    }
 
                     img {
                         height: auto;

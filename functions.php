@@ -87,6 +87,14 @@ function marzeotti_portfolio_taxonomies( $taxonomies ) {
 add_filter( 'marzeotti_base_custom_taxonomies', 'marzeotti_portfolio_taxonomies' );
 
 /**
+ * Enqueue scripts and styles.
+ */
+function marzeotti_portfolio_scripts() {
+	wp_enqueue_style( 'marzeotti-portfolio-fonts', 'https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Livvic:400,600|Nunito+Sans:400,600|Titillium+Web:400,600|PT+Serif:700' );
+}
+// add_action( 'wp_enqueue_scripts', 'marzeotti_portfolio_scripts' );
+
+/**
  * Overwrite default functionality for byline.
  */
 function marzeotti_base_posted_by() {

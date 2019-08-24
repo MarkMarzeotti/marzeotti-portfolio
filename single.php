@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package Marzeotti_Base
+ * @package Marzeotti_Portfolio
  */
 
 $post_type = get_post_type( $post );
