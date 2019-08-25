@@ -68,6 +68,16 @@ body {
 	z-index: 9 !important;
 }
 
+.nav-links {
+	text-align: center;
+	
+	a {
+		@extend .btn;
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+}
+
 [class^="icon-"], [class*=" icon-"] {
     font-family: 'icomoon' !important;
     speak-as: none;

@@ -13,6 +13,7 @@ form {
     input[type=phone],
     textarea {
         border: 1px solid rgba($color__mine-shaft, .4);
+        box-sizing: border-box;
         color: $color__mine-shaft;
         margin-bottom: 22px; 
         padding: 16px;
@@ -38,5 +39,12 @@ form {
     input[type=submit] {
         display: block;
         margin: 30px auto 0;
+    }
+
+    &.searchform {
+
+        input[type=submit] {
+            @extend .btn;
+        }
     }
 }
