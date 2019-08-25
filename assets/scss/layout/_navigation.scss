@@ -2,54 +2,24 @@
 
     &__button {
         appearance: none;
-        background-color: $color__mine-shaft;
-        border: 4px solid $color__white;
-        border-radius: 10px;
+        background-color: transparent;
+        border: 0;
         cursor: pointer;
         float: right;
-        height: 12px;
-        margin-top: 15px;
-        outline: none;
+        margin: -20px;
+        padding: 20px;
         position: relative;
-        text-indent: -9999px;
-        transition: background-color 300ms ease;
-        width: 38px;
         z-index: 60;
 
-        &:before,
-        &:after {
-            background-color: $color__mine-shaft;
-            border: 4px solid $color__white;
-            border-radius: 6px;
-            cursor: pointer;
-            content: '';
-            height: 4px;
-            outline: none;
-            position: absolute;
-            transition: top 300ms ease,
-                right 300ms ease,
-                bottom 300ms ease,
-                left 300ms ease,
-                transform 300ms ease;
-        }
-
-        &::before {
-            left: -4px;
-            right: 1px;
-            top: -14px;
-        }
-
-        &::after {
-            bottom: -14px;
-            left: -4px;
-            right: 6px;
-        }
-
         &:hover {
-
-            &::before,
-            &::after {
-                right: -4px;
+        
+            .hamburger {
+            
+                &__top,
+                &__middle,
+                &__bottom {
+                    width: 34px;
+                }
             }
         }
     }
@@ -186,22 +156,74 @@
         }
 
         .nav__button {
-            background-color: transparent;
-
-            &::before,
-            &::after {
-                right: -4px;
-            }
-
-            &::before {
-                top: -4px;
-                transform: rotate(45deg);
-            }
-
-            &::after {
-                bottom: -4px;
-                transform: rotate(-45deg);
+        
+            .hamburger {
+            
+                &__top,
+                &__middle,
+                &__bottom {
+                    width: 34px;
+                }
+            
+                &__top {
+                    top: 13px;
+                    transform: rotate(45deg);
+                }
+            
+                &__middle {
+                    opacity: 0;
+                }
+            
+                &__bottom {
+                    top: 13px;
+                    transform: rotate(-45deg);
+                }
             }
         }
+    }
+}
+        
+.hamburger {
+    display: block;
+    height: 38px;
+    position: relative;
+    width: 42px;
+
+    &__top,
+    &__middle,
+    &__bottom {
+        background-color: $color__mine-shaft;
+        border: 4px solid $color__white;
+        border-radius: 6px;
+        box-sizing: content-box;
+        display: block;
+        height: 4px;
+        left: 0;
+        position: absolute;
+    }
+
+    &__top {
+        top: 3px;
+        transition: left 300ms ease, 
+            top 300ms ease, 
+            transform 300ms ease, 
+            width 300ms ease;
+        width: 26px;
+    }
+
+    &__middle {
+        opacity: 1;
+        top: 13px;
+        transition: opacity 300ms ease;
+        width: 34px;
+    }
+
+    &__bottom {
+        top: 23px;
+        transition: left 300ms ease, 
+            top 300ms ease, 
+            transform 300ms ease, 
+            width 300ms ease;
+        width: 20px;
     }
 }

@@ -35,7 +35,14 @@
 				?>
 
 				<div id="<?php echo esc_attr( $modal_id ); ?>">
-					<button class="modal-close" aria-controls="<?php echo esc_attr( $modal_id ); ?>" aria-expanded="false"><?php esc_html_e( 'Close', 'marzeotti-base' ); ?></button>
+					<button class="nav__button modal-close" aria-controls="<?php echo esc_attr( $modal_id ); ?>" aria-expanded="false">
+						<span class="screen-reader-text"><?php esc_html_e( 'Close', 'marzeotti-base' ); ?></span>
+						<span class="hamburger">
+							<span class="hamburger__top"></span>
+							<span class="hamburger__middle"></span>
+							<span class="hamburger__bottom"></span>
+						</span>
+					</button>
 					<?php the_content(); ?>
 				</div>
 

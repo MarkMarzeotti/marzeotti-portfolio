@@ -4,7 +4,12 @@
 
 .tingle-modal {
     background: rgba($color__white, .5);
-    z-index: 90;
+    pointer-events: all !important;
+    z-index: 100;
+
+    * {
+        pointer-events: all !important;
+    }
 
     &--overflow {
         padding-bottom: 8vh;
@@ -16,45 +21,29 @@
         margin-right: auto; 
 
         .modal-close {
-            @include position(absolute, 20px 20px null null);
-            appearance: none;
-            background-color: transparent;
-            border: 4px solid $color__white;
-            border-radius: 10px;
-            cursor: pointer;
-            height: 12px;
-            margin-top: 15px;
-            outline: none;
-            text-indent: -9999px;
-            width: 38px;
-            z-index: 100;
-    
-            &:before,
-            &:after {
-                background-color: $color__mine-shaft;
-                border: 4px solid $color__white;
-                border-radius: 6px;
-                cursor: pointer;
-                content: '';
-                height: 4px;
-                outline: none;
-                position: absolute;
-                right: -4px;
-                transition: top 300ms ease,
-                    right 300ms ease,
-                    bottom 300ms ease,
-                    left 300ms ease;
-                width: 100%;
-            }
-
-            &::before {
-                top: -4px;
-                transform: rotate(45deg);
-            }
-
-            &::after {
-                bottom: -4px;
-                transform: rotate(-45deg);
+            @include position(absolute, 30px 20px null null);
+        
+            .hamburger {
+            
+                &__top,
+                &__middle,
+                &__bottom {
+                    width: 34px;
+                }
+            
+                &__top {
+                    top: 13px;
+                    transform: rotate(45deg);
+                }
+            
+                &__middle {
+                    opacity: 0;
+                }
+            
+                &__bottom {
+                    top: 13px;
+                    transform: rotate(-45deg);
+                }
             }
 
             + * {

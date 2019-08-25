@@ -1,43 +1,37 @@
 const webpack = require('webpack');
 const postcss = require('postcss');
-const BrowserSync = require('browser-sync-webpack-plugin');
+// const BrowserSync = require('browser-sync-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const style = new ExtractTextPlugin({
-	filename: 'dist/css/style.css',
-	disable: process.env.NODE_ENV === 'development'
+	filename: './dist/css/style.css',
 });
+
 const admin = new ExtractTextPlugin({
-	filename: 'dist/css/admin.css',
-	disable: process.env.NODE_ENV === 'development'
+	filename: './dist/css/admin.css',
 });
 
 module.exports = {
-	entry: './assets/js/App.js',
+	entry: {
+		app: './assets/js/app.js',
+		admin: './assets/js/admin.js',
+	},
 	output: {
 		path: __dirname,
-		filename: 'dist/js/bundle.js',
+		filename: 'dist/js/[name].js',
 	},
 	plugins: [
 		style,
 		admin,
-		new BrowserSync({
-			host: 'localhost',
-			port: 3000,
-			proxy: 'http://localhost',
-		}),
+		// new BrowserSync({
+		// 	host: 'localhost',
+		// 	port: 3000,
+		// 	proxy: 'http://localhost',
+		// })
 	],
 	devtool: 'source-map',
 	module: {
 		rules: [
-			{
-				test: /\.woff2$/,
-				exclude: /(node_modules)/,
-				loader: 'url-loader?limit=10000&mimetype=application/font-woff2',
-				options: {
-					name: 'dist/fonts/[name].[ext]',
-				},
-			},
 			{
 				test: /\.woff$/,
 				exclude: /(node_modules)/,
@@ -46,7 +40,7 @@ module.exports = {
 					name: 'dist/fonts/[name].[ext]',
 				},
 			},
-			{ 
+			{
 				test: /\.ttf$/,
 				exclude: /(node_modules)/,
 				loader: 'url-loader?limit=10000&mimetype=application/octet-stream',
@@ -54,7 +48,7 @@ module.exports = {
 					name: 'dist/fonts/[name].[ext]',
 				},
 			},
-			{ 
+			{
 				test: /\.eot$/,
 				exclude: /(node_modules)/,
 				loader: 'file-loader',
@@ -62,7 +56,7 @@ module.exports = {
 					name: 'dist/fonts/[name].[ext]',
 				},
 			},
-			{ 
+			{
 				test: /\.svg$/,
 				exclude: /(node_modules)/,
 				loader: 'url-loader?limit=10000&mimetype=image/svg+xml',
@@ -73,7 +67,7 @@ module.exports = {
 			{
 				test: /\.js$/,
 				exclude: /(node_modules)/,
-				loader: 'babel-loader?presets=env',
+				loader: ['babel-loader?presets=env'],
 			},
 			{
 				test: /\.json$/,
@@ -81,31 +75,39 @@ module.exports = {
 				loader: 'json-loader'
 			},
 			{
-				test: /style\.(scss|css)$/,
+				test:/style.(scss|css)$/,
 				use: style.extract({
 					fallback: 'style-loader',
 					use: [
 						{
 							loader: 'css-loader',
+							options: {
+								url: false,
+								sourceMap: true,
+							}
 						},
 						{
 							loader: 'postcss-loader',
 							options: {
 								ident: 'postcss',
+								sourceMap: true,
 								plugins: [
 									require('autoprefixer')(),
 									require('cssnano')()
-								]
+								],
 							}
 						},
-						{ 
-							loader: 'sass-loader'
+						{
+							loader: 'sass-loader',
+							options: {
+								sourceMap: true,
+							}
 						}
 					]
 				})
 			},
 			{
-				test: /admin\.(scss|css)$/,
+				test:/admin.(scss|css)$/,
 				use: admin.extract({
 					fallback: 'style-loader',
 					use: [
@@ -122,7 +124,7 @@ module.exports = {
 								]
 							}
 						},
-						{ 
+						{
 							loader: 'sass-loader'
 						}
 					]
