@@ -214,3 +214,17 @@ function marzeotti_portfolio_jquery_in_footer() {
     wp_enqueue_script( 'jquery' );
 }
 add_action( 'wp_enqueue_scripts', 'marzeotti_portfolio_jquery_in_footer' );
+
+/**
+ * Remove plugin provided Maps API script.
+ */
+function marzeotti_portfolio_remove_maps_api_script() {
+	wp_deregister_script( 'google-maps' );
+	wp_enqueue_script( 'advanced-maps-block-frontend-js',
+		plugins_url( '/src/frontend.js', 'advanced-maps-block' ),
+		array(),
+		'0.1.0',
+		true
+	);
+}
+// add_action( 'wp_enqueue_scripts', 'marzeotti_portfolio_remove_maps_api_script', 10 );

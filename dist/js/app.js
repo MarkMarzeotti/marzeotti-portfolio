@@ -363,12 +363,12 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;!function(t,o)
 (function ($) {
     $(document).ready(function () {
 
-        if ($('#map').length) {
+        if ($('.wp-block-amb-advanced-maps-block').length) {
             setTimeout(function () {
                 var body = document.getElementsByTagName('body')[0];
                 var googleScript = document.createElement('script');
                 googleScript.type = 'text/javascript';
-                googleScript.src = '//maps.googleapis.com/maps/api/js?key=AIzaSyCb0NahCEnubhm0zEaBcJKF4nPgrSZ3IQM&callback=initMap';
+                googleScript.src = '//maps.googleapis.com/maps/api/js?key=AIzaSyCb0NahCEnubhm0zEaBcJKF4nPgrSZ3IQM&callback=advancedMapsBlockInit';
                 body.appendChild(googleScript);
             }, 3000);
         }
