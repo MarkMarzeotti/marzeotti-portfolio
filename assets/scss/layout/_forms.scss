@@ -1,50 +1,50 @@
 form {
-    margin: 40px 0;
-    width: 100%;
+	margin: 40px 0;
+	width: 100%;
 
-    label {
-        color: $color__mine-shaft;
-        display: block;
-        margin-bottom: 8px; 
-    }
+	label {
+		color: $color__mine-shaft;
+		display: block;
+		margin-bottom: 8px;
+	}
 
-    input[type=text],
-    input[type=email],
-    input[type=phone],
-    textarea {
-        border: 1px solid rgba($color__mine-shaft, .4);
-        box-sizing: border-box;
-        color: $color__mine-shaft;
-        margin-bottom: 22px; 
-        padding: 16px;
-        width: 100%;
+	input[type=text],
+	input[type=email],
+	input[type=phone],
+	textarea {
+		border: 1px solid rgba($color__mine-shaft, .4);
+		box-sizing: border-box;
+		color: $color__mine-shaft;
+		margin-bottom: 22px;
+		padding: 16px;
+		width: 100%;
 
-        &:focus {
-            box-shadow: $shadow;
-        }
+		&:focus {
+			box-shadow: $shadow;
+		}
 
-        &::placeholder {
-            color: rgba($color__mine-shaft, .4);
-        }
-        
-        &:-ms-input-placeholder {
-            color: rgba($color__mine-shaft, .4);
-        }
-        
-        &::-ms-input-placeholder {
-            color: rgba($color__mine-shaft, .4);
-        }
-    }
+		&::placeholder {
+			color: rgba($color__mine-shaft, .4);
+		}
 
-    input[type=submit] {
-        display: block;
-        margin: 30px auto 0;
-    }
+		&:-ms-input-placeholder {
+			color: rgba($color__mine-shaft, .4);
+		}
 
-    &.searchform {
+		&::-ms-input-placeholder {
+			color: rgba($color__mine-shaft, .4);
+		}
+	}
 
-        input[type=submit] {
-            @extend .btn;
-        }
-    }
+	input[type=submit] {
+		display: block;
+		margin: 30px auto 0;
+	}
+
+	&.searchform {
+
+		input[type=submit] {
+			@extend .btn;
+		}
+	}
 }

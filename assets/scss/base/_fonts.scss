@@ -2,46 +2,46 @@ $font__primary: 'Tiemposheadline';
 $font__secondary: 'Graphik';
 
 @font-face {
-    font-family: 'Tiemposheadline';
-    font-display: auto;
-    src: url('../fonts/TiemposHeadline-Bold.woff2') format('woff2'),
-        url('../fonts/TiemposHeadline-Bold.woff') format('woff'),
-        url('../fonts/TiemposHeadline-Bold.ttf') format('truetype'),
-        url('../fonts/TiemposHeadline-Bold.eot') format('embedded-opentype');
-    font-weight: 700;
-    font-style: normal;
+	font-family: 'Tiemposheadline';
+	font-display: auto;
+	src: url('../fonts/TiemposHeadline-Bold.woff2') format('woff2'),
+		url('../fonts/TiemposHeadline-Bold.woff') format('woff'),
+		url('../fonts/TiemposHeadline-Bold.ttf') format('truetype'),
+		url('../fonts/TiemposHeadline-Bold.eot') format('embedded-opentype');
+	font-weight: 700;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'Graphik';
-    font-display: auto;
-    src: url('../fonts/Graphik-Regular.woff2') format('woff2'),
-        url('../fonts/Graphik-Regular.woff') format('woff'),
-        url('../fonts/Graphik-Regular.ttf') format('truetype'),
-        url('../fonts/Graphik-Regular.eot') format('embedded-opentype');
-    font-weight: 400;
-    font-style: normal;
+	font-family: 'Graphik';
+	font-display: auto;
+	src: url('../fonts/Graphik-Regular.woff2') format('woff2'),
+		url('../fonts/Graphik-Regular.woff') format('woff'),
+		url('../fonts/Graphik-Regular.ttf') format('truetype'),
+		url('../fonts/Graphik-Regular.eot') format('embedded-opentype');
+	font-weight: 400;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'Graphik';
-    font-display: auto;
-    src: url('../fonts/Graphik-Medium.woff2') format('woff2'),
-        url('../fonts/Graphik-Medium.woff') format('woff'),
-        url('../fonts/Graphik-Medium.ttf') format('truetype'),
-        url('../fonts/Graphik-Medium.eot') format('embedded-opentype');
-    font-weight: 500;
-    font-style: normal;
+	font-family: 'Graphik';
+	font-display: auto;
+	src: url('../fonts/Graphik-Medium.woff2') format('woff2'),
+		url('../fonts/Graphik-Medium.woff') format('woff'),
+		url('../fonts/Graphik-Medium.ttf') format('truetype'),
+		url('../fonts/Graphik-Medium.eot') format('embedded-opentype');
+	font-weight: 500;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'icomoon';
-    font-display: auto;
-    src: url('../icomoon/fonts/icomoon.eot?8retop');
-    src: url('../icomoon/fonts/icomoon.eot?8retop#iefix') format('embedded-opentype'),
-        url('../icomoon/fonts/icomoon.ttf?8retop') format('truetype'),
-        url('../icomoon/fonts/icomoon.woff?8retop') format('woff'),
-        url('../icomoon/fonts/icomoon.svg?8retop#icomoon') format('svg');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'icomoon';
+	font-display: auto;
+	src: url('../icomoon/fonts/icomoon.eot?8retop');
+	src: url('../icomoon/fonts/icomoon.eot?8retop#iefix') format('embedded-opentype'),
+		url('../icomoon/fonts/icomoon.ttf?8retop') format('truetype'),
+		url('../icomoon/fonts/icomoon.woff?8retop') format('woff'),
+		url('../icomoon/fonts/icomoon.svg?8retop#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
 }

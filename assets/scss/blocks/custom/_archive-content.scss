@@ -1,156 +1,156 @@
 .content__blocks,
 .content__single {
 
-    .wp-block-portfolio-blocks-archive-content {
+	.wp-block-portfolio-blocks-archive-content {
 
-        .archive-content {
-            box-sizing: border-box;
-            margin: 0 auto;
-            max-width: 1200px;
-            padding-left: 20px;
-            padding-right: 20px;
+		.archive-content {
+			box-sizing: border-box;
+			margin: 0 auto;
+			max-width: 1200px;
+			padding-left: 20px;
+			padding-right: 20px;
 
-            @include grid-media($medium-screen-grid) {
-                padding-left: 40px;
-                padding-right: 40px;
-            }
+			@include grid-media($medium-screen-grid) {
+				padding-left: 40px;
+				padding-right: 40px;
+			}
 
-            &__posts {
-                
-                &.column {
-                    display: flex;
-                    flex-flow: row wrap;
+			&__posts {
 
-                    .archive-content__item {
-                        width: 100%;
+				&.column {
+					display: flex;
+					flex-flow: row wrap;
 
-                        @include grid-media($medium-screen-grid) {
-                            margin-right: 40px;
-                            width: calc(50% - 20px);
-                        }
+					.archive-content__item {
+						width: 100%;
 
-                        &:nth-child(even) {
-                            margin-right: 0;
-                        }
-                    }
-                }
-            }
+						@include grid-media($medium-screen-grid) {
+							margin-right: 40px;
+							width: calc(50% - 20px);
+						}
 
-            &__item {
-                display: flex;
-                flex-flow: row wrap;
-                margin-bottom: 80px;
+						&:nth-child(even) {
+							margin-right: 0;
+						}
+					}
+				}
+			}
 
-                @include grid-media($medium-screen-grid) {
-                    flex-flow: row nowrap;
+			&__item {
+				display: flex;
+				flex-flow: row wrap;
+				margin-bottom: 80px;
 
-                    &:hover {
+				@include grid-media($medium-screen-grid) {
+					flex-flow: row nowrap;
 
-                        .archive-content__image {
-                            padding: 0 0 8px;
+					&:hover {
 
-                            img {
-                                box-shadow: $shadow;
-                            }
-                        }
-                    }
-                }
+						.archive-content__image {
+							padding: 0 0 8px;
 
-                &:last-child {
-                    margin-bottom: 0;
-                }
-            }
+							img {
+								box-shadow: $shadow;
+							}
+						}
+					}
+				}
 
-            &__image {
-                flex-grow: 0;
-                flex-shrink: 0;
-                padding: 8px 0 0;
-                transition: padding 300ms ease;
-                width: 100%;
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
 
-                @include grid-media($medium-screen-grid) {
-                    margin-right: 40px;
-                    width: 300px;
-                }
+			&__image {
+				flex-grow: 0;
+				flex-shrink: 0;
+				padding: 8px 0 0;
+				transition: padding 300ms ease;
+				width: 100%;
 
-                a {
-                    display: block;
-                    width: 100%;
-                }
+				@include grid-media($medium-screen-grid) {
+					margin-right: 40px;
+					width: 300px;
+				}
 
-                img {
-                    box-shadow: 0;
-                    display: block;
-                    height: auto;
-                    margin-bottom: 30px;
-                    transition: box-shadow 300ms ease;
-                    width: 100%;
+				a {
+					display: block;
+					width: 100%;
+				}
 
-                    @include grid-media($medium-screen-grid) {
-                        margin-bottom: 0;
-                    }
-                }
-            }
+				img {
+					box-shadow: 0;
+					display: block;
+					height: auto;
+					margin-bottom: 30px;
+					transition: box-shadow 300ms ease;
+					width: 100%;
 
-            &__content {
-                flex-grow: 1;
-                position: relative;
-                padding: 23px 0 0;
+					@include grid-media($medium-screen-grid) {
+						margin-bottom: 0;
+					}
+				}
+			}
 
-                h2 {
-                    margin-bottom: 20px;
-                    padding-right: 100px;
+			&__content {
+				flex-grow: 1;
+				position: relative;
+				padding: 23px 0 0;
 
-                    a {
-                        color: $color__mine-shaft;
-                        text-decoration: none;
-                    }
-                }
+				h2 {
+					margin-bottom: 20px;
+					padding-right: 100px;
 
-                .agency-logo {
-                    @include position(absolute, 10px 20px null null);
-                    height: 50px;
-                    width: 50px;
+					a {
+						color: $color__mine-shaft;
+						text-decoration: none;
+					}
+				}
 
-                    @include grid-media($medium-screen-grid) {
-                        top: 15px;
-                    }
+				.agency-logo {
+					@include position(absolute, 10px 20px null null);
+					height: 50px;
+					width: 50px;
 
-                    img {
-                        height: auto;
-                        width: 100%;
-                    }
+					@include grid-media($medium-screen-grid) {
+						top: 15px;
+					}
 
-                    &[aria-label]:hover::after {
-                        @include position(absolute, null 50% calc(100% + 10px) null);
-                        background-color: $color__mine-shaft;
-                        border-radius: 6px;
-                        color: $color__white;
-                        content: attr(aria-label);
-                        font-family: $font__secondary;
-                        font-size: 14px;
-                        padding: 10px 16px;
-                        width: 170px;
-                    }
+					img {
+						height: auto;
+						width: 100%;
+					}
 
-                    &[aria-label]:hover::before {
-                        @include position(absolute, null 50% calc(100% + 4px) null);
-                        border: 10px solid transparent;
-                        border-right: 16px solid $color__mine-shaft;
-                        content: '';
-                        height: 0;
-                        width: 0;
-                    }
-                }
+					&[aria-label]:hover::after {
+						@include position(absolute, null 50% calc(100% + 10px) null);
+						background-color: $color__mine-shaft;
+						border-radius: 6px;
+						color: $color__white;
+						content: attr(aria-label);
+						font-family: $font__secondary;
+						font-size: 14px;
+						padding: 10px 16px;
+						width: 170px;
+					}
 
-                p {
-                    margin-bottom: 30px;
-                }
-            }
+					&[aria-label]:hover::before {
+						@include position(absolute, null 50% calc(100% + 4px) null);
+						border: 10px solid transparent;
+						border-right: 16px solid $color__mine-shaft;
+						content: '';
+						height: 0;
+						width: 0;
+					}
+				}
 
-            &__button {
-                @extend .btn;
-            }
-        }
-    }
+				p {
+					margin-bottom: 30px;
+				}
+			}
+
+			&__button {
+				@extend .btn;
+			}
+		}
+	}
 }

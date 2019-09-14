@@ -14,29 +14,29 @@
 	</div>
 
 	<?php
-	$args = array(
+	$marzeotti_portfolio_args = array(
 		'post_type'              => array( 'modal' ),
 		'post_status'            => array( 'publish' ),
 		'posts_per_page'         => 100,
 	);
 
-	$query = new WP_Query( $args );
+	$marzeotti_portfolio_query = new WP_Query( $marzeotti_portfolio_args );
 
-	if ( $query->have_posts() ) :
+	if ( $marzeotti_portfolio_query->have_posts() ) :
 		?>
 
 		<div class="modals">
 
 			<?php
-			while ( $query->have_posts() ) :
-				$query->the_post();
+			while ( $marzeotti_portfolio_query->have_posts() ) :
+				$marzeotti_portfolio_query->the_post();
 
-				$modal_id = sanitize_title( $post->post_title );
+				$marzeotti_portfolio_modal_id = sanitize_title( $post->post_title );
 				?>
 
-				<div id="<?php echo esc_attr( $modal_id ); ?>">
-					<button class="nav__button modal-close" aria-controls="<?php echo esc_attr( $modal_id ); ?>" aria-expanded="false">
-						<span class="screen-reader-text"><?php esc_html_e( 'Close', 'marzeotti-base' ); ?></span>
+				<div id="<?php echo esc_attr( $marzeotti_portfolio_modal_id ); ?>">
+					<button class="nav__button modal-close" aria-controls="<?php echo esc_attr( $marzeotti_portfolio_modal_id ); ?>" aria-expanded="false">
+						<span class="screen-reader-text"><?php esc_html_e( 'Close', 'marzeotti_portfolio' ); ?></span>
 						<span class="hamburger">
 							<span class="hamburger__top"></span>
 							<span class="hamburger__middle"></span>
@@ -60,7 +60,8 @@
 
 	<footer id="footer" class="footer">
 		<div class="footer__copyright">
-			<p>&copy; <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?>. All Rights Reserved.</p>
+			<?php $marzeotti_portfolio_date = date( 'Y' ); ?>
+			<p>&copy; <?php echo esc_html( $marzeotti_portfolio_date ); ?> <?php bloginfo( 'name' ); ?>. All Rights Reserved.</p>
 		</div>
 
 		<div class="footer__social">
@@ -74,11 +75,13 @@
 
 		<nav class="footer__nav">
 			<?php
-			wp_nav_menu( array(
-				'container'      => false,
-				'menu_class'     => false,
-				'theme_location' => 'footer-menu',
-			) );
+			wp_nav_menu(
+				array(
+					'container'      => false,
+					'menu_class'     => false,
+					'theme_location' => 'footer-menu',
+				)
+			);
 			?>
 		</nav>
 	</footer>

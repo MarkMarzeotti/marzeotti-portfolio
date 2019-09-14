@@ -1,34 +1,34 @@
 .content__blocks,
 .content__single {
 
-    .wp-block-portfolio-blocks-work {
-        padding-bottom: 0;
+	.wp-block-portfolio-blocks-work {
+		padding-bottom: 0;
 
-        .work {
-            box-sizing: border-box;
-            margin: 0 auto;
-            max-width: 1200px;
-            padding: 0 20px;
+		.work {
+			box-sizing: border-box;
+			margin: 0 auto;
+			max-width: 1200px;
+			padding: 0 20px;
 
-            @include grid-media($medium-screen-grid) {
-                padding-left: 40px;
-                padding-right: 40px;
-            }
-        }
+			@include grid-media($medium-screen-grid) {
+				padding-left: 40px;
+				padding-right: 40px;
+			}
+		}
 
-        + .wp-block-portfolio-blocks-blurb {
+		+ .wp-block-portfolio-blocks-blurb {
 
-            h2 {
-                max-width: 50%;
-            }
-        }
+			h2 {
+				max-width: 50%;
+			}
+		}
 
-        + *:not(.wp-block-portfolio-blocks-blurb) {
-            margin-top: 290px;
+		+ *:not(.wp-block-portfolio-blocks-blurb) {
+			margin-top: 290px;
 
-            @include grid-media($medium-screen-grid) {
-                margin-top: 320px;
-            }
-        }
-    }
+			@include grid-media($medium-screen-grid) {
+				margin-top: 320px;
+			}
+		}
+	}
 }

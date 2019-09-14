@@ -1,28 +1,28 @@
 .footer {
 	padding: 30px 0 20px;
 
-    &__copyright {
+	&__copyright {
 		@include grid-column(4);
 		margin-bottom: 20px;
 		text-align: center;
 
-        @include grid-media($medium-screen-grid) {
-            @include grid-column(4);
+		@include grid-media($medium-screen-grid) {
+			@include grid-column(4);
 			margin-bottom: 0;
 			text-align: left;
-        }
-    }
+		}
+	}
 
-    &__social {
-        @include grid-column(4);
+	&__social {
+		@include grid-column(4);
 		margin-bottom: 20px;
 		text-align: center;
 
-        @include grid-media($medium-screen-grid) {
-            @include grid-column(4);
+		@include grid-media($medium-screen-grid) {
+			@include grid-column(4);
 			margin-bottom: 0;
 			margin-top: -4px;
-        }
+		}
 
 		ul {
 			margin: 0;
@@ -34,7 +34,7 @@
 				margin: 0 10px;
 
 				a {
-                    color: $color__mine-shaft;
+					color: $color__mine-shaft;
 					padding: 10px;
 					text-decoration: none;
 					transition: color 200ms ease;
@@ -50,16 +50,16 @@
 				}
 			}
 		}
-    }
+	}
 
-    &__nav {
-        @include grid-column(4);
+	&__nav {
+		@include grid-column(4);
 		text-align: center;
 
-        @include grid-media($medium-screen-grid) {
-            @include grid-column(4);
+		@include grid-media($medium-screen-grid) {
+			@include grid-column(4);
 			text-align: right;
-        }
+		}
 
 		ul {
 			margin: 0;
@@ -82,5 +82,5 @@
 				}
 			}
 		}
-    }
+	}
 }

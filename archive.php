@@ -7,15 +7,15 @@
  * @package Marzeotti_Portfolio
  */
 
-$taxonomy = get_query_var( 'taxonomy' );
-$allowed_taxonomies = array(
+$marzeotti_portfolio_taxonomy           = get_query_var( 'taxonomy' );
+$marzeotti_portfolio_allowed_taxonomies = array(
 	'post_tag',
-	'category'
+	'category',
 );
 
-if ( ! in_array( $taxonomy, $allowed_taxonomies ) ) {
-	$url = esc_url( home_url( '/' ) );
-	wp_redirect( $url );
+if ( ! in_array( $marzeotti_portfolio_taxonomy, $marzeotti_portfolio_allowed_taxonomies, true ) ) {
+	$marzeotti_portfolio_url = esc_url( home_url( '/' ) );
+	wp_safe_redirect( $marzeotti_portfolio_url );
 	exit;
 }
 
@@ -35,7 +35,8 @@ get_header();
 				</header>
 
 				<?php
-				while ( have_posts() ) : the_post();
+				while ( have_posts() ) :
+					the_post();
 
 					get_template_part( 'template-parts/content', get_post_type() );
 
@@ -43,12 +44,12 @@ get_header();
 
 				the_posts_navigation();
 
-			else :
+				else :
 
-				get_template_part( 'template-parts/content', 'none' );
+					get_template_part( 'template-parts/content', 'none' );
 
 			endif;
-			?>
+				?>
 
 		</main>
 		<?php get_sidebar(); ?>

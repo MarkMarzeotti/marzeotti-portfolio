@@ -1,229 +1,229 @@
 .nav {
 
-    &__button {
-        appearance: none;
-        background-color: transparent;
-        border: 0;
-        cursor: pointer;
-        float: right;
-        margin: -20px;
-        padding: 20px;
-        position: relative;
-        z-index: 60;
+	&__button {
+		appearance: none;
+		background-color: transparent;
+		border: 0;
+		cursor: pointer;
+		float: right;
+		margin: -20px;
+		padding: 20px;
+		position: relative;
+		z-index: 60;
 
-        &:hover {
-        
-            .hamburger {
-            
-                &__top,
-                &__middle,
-                &__bottom {
-                    width: 34px;
-                }
-            }
-        }
-    }
+		&:hover {
 
-    &__container {
+			.hamburger {
 
-        &--primary-menu {
-            @include position(fixed, 0 -80vw 0 null);
-            align-items: center;
-            background-color: $color__white;
-            box-shadow: 0;
-            box-sizing: border-box;
-            display: flex;
-            flex-flow: row wrap;
-            overflow: scroll;
-            padding: 100px 40px 40px;
-            transition: right 300ms ease,
-                box-shadow 300ms ease;
-            width: 80vw;
-            z-index: 50;
+				&__top,
+				&__middle,
+				&__bottom {
+					width: 34px;
+				}
+			}
+		}
+	}
 
-            @include grid-media($medium-screen-grid) {
-                padding: 140px 40px 80px;
-                right: -450px;
-                width: 450px;
-            }
+	&__container {
 
-            ul {
-                box-sizing: border-box;
-                display: block;
-                float: left;
-                width: 100%;
+		&--primary-menu {
+			@include position(fixed, 0 -80vw 0 null);
+			align-items: center;
+			background-color: $color__white;
+			box-shadow: 0;
+			box-sizing: border-box;
+			display: flex;
+			flex-flow: row wrap;
+			overflow: scroll;
+			padding: 100px 40px 40px;
+			transition: right 300ms ease,
+				box-shadow 300ms ease;
+			width: 80vw;
+			z-index: 50;
 
-                li {
-                    display: block;
-                    float: left;
-                    position: relative;
-                    width: 100%;
+			@include grid-media($medium-screen-grid) {
+				padding: 140px 40px 80px;
+				right: -450px;
+				width: 450px;
+			}
 
-                    @include grid-media($medium-screen-grid) {
+			ul {
+				box-sizing: border-box;
+				display: block;
+				float: left;
+				width: 100%;
 
-                        &:hover {
+				li {
+					display: block;
+					float: left;
+					position: relative;
+					width: 100%;
 
-                            a {
-                                padding-left: 10px;
+					@include grid-media($medium-screen-grid) {
 
-                                &::before {
-                                    background-color: $color__mine-shaft;
-                                }
-                            }
-                        }
-                    }
+						&:hover {
 
-                    a {
-                        box-sizing: border-box;
-                        color: $color__mine-shaft;
-                        float: left;
-                        font-family: $font__primary;
-                        font-size: 30px;
-                        font-weight: 700;
-                        line-height: 50px;
-                        padding-bottom: 10px;
-                        padding-left: 0;
-                        padding-top: 10px;
-                        text-decoration: none;
-                        transition: padding-left 300ms ease;
-                        width: 100%;
+							a {
+								padding-left: 10px;
 
-                        @include grid-media($medium-screen-grid) {
-                            padding-left: 30px;
-                        }
+								&::before {
+									background-color: $color__mine-shaft;
+								}
+							}
+						}
+					}
 
-                        &::before {
-                            @include position(absolute, 0 null 0 -40px);
-                            background-color: transparent;
-                            content: '';
-                            transition: background-color 300ms ease;
-                            width: 4px;
-                        }
-                    }
+					a {
+						box-sizing: border-box;
+						color: $color__mine-shaft;
+						float: left;
+						font-family: $font__primary;
+						font-size: 30px;
+						font-weight: 700;
+						line-height: 50px;
+						padding-bottom: 10px;
+						padding-left: 0;
+						padding-top: 10px;
+						text-decoration: none;
+						transition: padding-left 300ms ease;
+						width: 100%;
 
-                    &.nav__item--is-current {
+						@include grid-media($medium-screen-grid) {
+							padding-left: 30px;
+						}
 
-                        a::before {
-                            background-color: $color__mine-shaft;
-                        }
-                    }
-                }
-            }
-        }
+						&::before {
+							@include position(absolute, 0 null 0 -40px);
+							background-color: transparent;
+							content: '';
+							transition: background-color 300ms ease;
+							width: 4px;
+						}
+					}
 
-        &--button-menu {
-            @include position(fixed, 20px null null 120%);
-            transition: left 300ms ease;
-            z-index: 60;
+					&.nav__item--is-current {
 
-            @include grid-media($medium-screen-grid) {
-                @include position(relative, auto null null auto);
-            }
+						a::before {
+							background-color: $color__mine-shaft;
+						}
+					}
+				}
+			}
+		}
 
-            ul {
-                display: block;
-                float: right;
-                padding-right: 80px;
-                position: relative;
+		&--button-menu {
+			@include position(fixed, 20px null null 120%);
+			transition: left 300ms ease;
+			z-index: 60;
 
-                li {
+			@include grid-media($medium-screen-grid) {
+				@include position(relative, auto null null auto);
+			}
 
-                    a {
+			ul {
+				display: block;
+				float: right;
+				padding-right: 80px;
+				position: relative;
+
+				li {
+
+					a {
 						white-space: nowrap;
-                    }
-                }
-            }
-        }
-    }
+					}
+				}
+			}
+		}
+	}
 
-    &__item {
-        margin-bottom: 0;
-    }
+	&__item {
+		margin-bottom: 0;
+	}
 
-    &.toggled {
+	&.toggled {
 
-        .nav__container--primary-menu {
-            box-shadow: $shadow;
-            right: 0;
-        }
+		.nav__container--primary-menu {
+			box-shadow: $shadow;
+			right: 0;
+		}
 
-        .nav__container--button-menu {
-            left: calc(20vw + 40px);
+		.nav__container--button-menu {
+			left: calc(20vw + 40px);
 
-            @include grid-media($medium-screen-grid) {
-                left: auto;
-            }
-        }
+			@include grid-media($medium-screen-grid) {
+				left: auto;
+			}
+		}
 
-        .nav__button {
-        
-            .hamburger {
-            
-                &__top,
-                &__middle,
-                &__bottom {
-                    width: 34px;
-                }
-            
-                &__top {
-                    top: 13px;
-                    transform: rotate(45deg);
-                }
-            
-                &__middle {
-                    opacity: 0;
-                }
-            
-                &__bottom {
-                    top: 13px;
-                    transform: rotate(-45deg);
-                }
-            }
-        }
-    }
+		.nav__button {
+
+			.hamburger {
+
+				&__top,
+				&__middle,
+				&__bottom {
+					width: 34px;
+				}
+
+				&__top {
+					top: 13px;
+					transform: rotate(45deg);
+				}
+
+				&__middle {
+					opacity: 0;
+				}
+
+				&__bottom {
+					top: 13px;
+					transform: rotate(-45deg);
+				}
+			}
+		}
+	}
 }
-        
+
 .hamburger {
-    display: block;
-    height: 38px;
-    position: relative;
-    width: 42px;
+	display: block;
+	height: 38px;
+	position: relative;
+	width: 42px;
 
-    &__top,
-    &__middle,
-    &__bottom {
-        background-color: $color__mine-shaft;
-        border: 4px solid $color__white;
-        border-radius: 6px;
-        box-sizing: content-box;
-        display: block;
-        height: 4px;
-        left: 0;
-        position: absolute;
-    }
+	&__top,
+	&__middle,
+	&__bottom {
+		background-color: $color__mine-shaft;
+		border: 4px solid $color__white;
+		border-radius: 6px;
+		box-sizing: content-box;
+		display: block;
+		height: 4px;
+		left: 0;
+		position: absolute;
+	}
 
-    &__top {
-        top: 3px;
-        transition: left 300ms ease, 
-            top 300ms ease, 
-            transform 300ms ease, 
-            width 300ms ease;
-        width: 26px;
-    }
+	&__top {
+		top: 3px;
+		transition: left 300ms ease,
+			top 300ms ease,
+			transform 300ms ease,
+			width 300ms ease;
+		width: 26px;
+	}
 
-    &__middle {
-        opacity: 1;
-        top: 13px;
-        transition: opacity 300ms ease;
-        width: 34px;
-    }
+	&__middle {
+		opacity: 1;
+		top: 13px;
+		transition: opacity 300ms ease;
+		width: 34px;
+	}
 
-    &__bottom {
-        top: 23px;
-        transition: left 300ms ease, 
-            top 300ms ease, 
-            transform 300ms ease, 
-            width 300ms ease;
-        width: 20px;
-    }
+	&__bottom {
+		top: 23px;
+		transition: left 300ms ease,
+			top 300ms ease,
+			transform 300ms ease,
+			width 300ms ease;
+		width: 20px;
+	}
 }

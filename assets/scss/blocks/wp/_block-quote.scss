@@ -1,57 +1,57 @@
 .content__blocks,
 .content__single {
 
-    .wp-block-quote {
-        margin: 0;
-        padding: 0;
-        position: relative;
+	.wp-block-quote {
+		margin: 0;
+		padding: 0;
+		position: relative;
 
-        p {
-            color: $color__mine-shaft;
-            font-family: $font__secondary;
-            font-size: 24px;
-            line-height: 1.6;
-        }
+		p {
+			color: $color__mine-shaft;
+			font-family: $font__secondary;
+			font-size: 24px;
+			line-height: 1.6;
+		}
 
-        cite {
-            color: rgba($color__mine-shaft, .6);
-            font-family: $font__secondary;
-            font-style: normal;
-        }
-    }
+		cite {
+			color: rgba($color__mine-shaft, .6);
+			font-family: $font__secondary;
+			font-style: normal;
+		}
+	}
 }
 
 .content__blocks {
 
-    .wp-block-quote {
+	.wp-block-quote {
 
-        &::before {
-            @include position(absolute, 0 null null -60px);
-            color: rgba($color__mine-shaft, .6);
-            content: '\201C';
-            font-family: $font__primary;
-            font-size: 80px;
-            font-weight: 700;
-        }
+		&::before {
+			@include position(absolute, 0 null null -60px);
+			color: rgba($color__mine-shaft, .6);
+			content: '\201C';
+			font-family: $font__primary;
+			font-size: 80px;
+			font-weight: 700;
+		}
 
-        p {
-            margin-bottom: 30px;
-        }
-    }
+		p {
+			margin-bottom: 30px;
+		}
+	}
 }
 
 .content__single {
 
-    .wp-block-quote {
+	.wp-block-quote {
 
-        p {
-            border-left: 2px solid $color__mine-shaft;
-            font-size: 22px;
-            padding: 10px 0 10px 40px;
+		p {
+			border-left: 2px solid $color__mine-shaft;
+			font-size: 22px;
+			padding: 10px 0 10px 40px;
 
-            @include grid-media($medium-screen-grid) {
-                font-size: 22px;
-            }
-        }
-    }
+			@include grid-media($medium-screen-grid) {
+				font-size: 22px;
+			}
+		}
+	}
 }

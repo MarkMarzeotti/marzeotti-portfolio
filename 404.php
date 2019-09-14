@@ -16,7 +16,7 @@ get_header();
 			<div class="page-heading">
 				<div class="page-heading__content">
 					<span>404</span>
-					<h1><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'marzeotti-base' ); ?></h1>
+					<h1><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'marzeotti_portfolio' ); ?></h1>
 				</div>
 			</div>
 		</div>
@@ -25,7 +25,7 @@ get_header();
 
 	<div class="content__single">
 		<article>
-			<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try searching?', 'marzeotti-base' ); ?></p>
+			<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try searching?', 'marzeotti_portfolio' ); ?></p>
 			<?php get_search_form(); ?>
 		</article>
 	</div>

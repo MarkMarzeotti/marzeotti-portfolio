@@ -14,9 +14,11 @@ function marzeotti_portfolio_setup() {
 	 *
 	 * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
 	 */
-	register_nav_menus( array(
-		'button-menu' => esc_html__( 'Button Menu', 'marzeotti-portfolio' ),
-	) );
+	register_nav_menus(
+		array(
+			'button-menu' => esc_html__( 'Button Menu', 'marzeotti_portfolio' ),
+		)
+	);
 
 	/**
 	 * Overide medium size to crop.
@@ -29,78 +31,74 @@ add_action( 'after_setup_theme', 'marzeotti_portfolio_setup' );
  * Allow the excerpt field to show on pages.
  */
 function marzeotti_portfolio_allow_excerpt() {
-    add_post_type_support( 'page', 'excerpt' );
+	add_post_type_support( 'page', 'excerpt' );
 }
 add_action( 'init', 'marzeotti_portfolio_allow_excerpt' );
 
 /**
  * Add custom post types.
+ *
+ * @param array $post_types An array of post types to add.
  */
 function marzeotti_portfolio_post_types( $post_types ) {
 	return array(
-		array( 
-			'slug'          => 'talk', 
-			'url_base'      => 'talks', 
-			'name_singular' => 'Talk', 
-			'name_plural'   => 'Talks', 
+		array(
+			'slug'          => 'talk',
+			'url_base'      => 'talks',
+			'name_singular' => 'Talk',
+			'name_plural'   => 'Talks',
 			'icon'          => 'dashicons-format-status',
 			'taxonomies'    => array(),
-			'has_archive'   => false 
+			'has_archive'   => false,
 		),
-		array( 
-			'slug'          => 'work', 
-			'url_base'      => 'work', 
-			'name_singular' => 'Work', 
-			'name_plural'   => 'Work', 
+		array(
+			'slug'          => 'work',
+			'url_base'      => 'work',
+			'name_singular' => 'Work',
+			'name_plural'   => 'Work',
 			'icon'          => 'dashicons-editor-code',
 			'taxonomies'    => array(),
-			'has_archive'   => false 
+			'has_archive'   => false,
 		),
-		array( 
-			'slug'          => 'modal', 
-			'url_base'      => 'modals', 
-			'name_singular' => 'Modal', 
-			'name_plural'   => 'Modals', 
+		array(
+			'slug'          => 'modal',
+			'url_base'      => 'modals',
+			'name_singular' => 'Modal',
+			'name_plural'   => 'Modals',
 			'icon'          => 'dashicons-editor-expand',
 			'taxonomies'    => array(),
-			'has_archive'   => false 
-		)
+			'has_archive'   => false,
+		),
 	);
 }
 add_filter( 'marzeotti_base_custom_post_types', 'marzeotti_portfolio_post_types' );
 
 /**
  * Add custom taxonomies.
+ *
+ * @param array $taxonomies An array of taxonomies to add.
  */
 function marzeotti_portfolio_taxonomies( $taxonomies ) {
 	return array(
-		array( 
-			'slug'              => 'agency', 
-			'url_base'          => 'agency', 
-			'name_singular'     => 'Agency', 
-			'name_plural'       => 'Agencies', 
+		array(
+			'slug'              => 'agency',
+			'url_base'          => 'agency',
+			'name_singular'     => 'Agency',
+			'name_plural'       => 'Agencies',
 			'post_types'        => array( 'work' ),
-			'show_admin_column' => true 
-		)
+			'show_admin_column' => true,
+		),
 	);
 }
 add_filter( 'marzeotti_base_custom_taxonomies', 'marzeotti_portfolio_taxonomies' );
 
 /**
- * Enqueue scripts and styles.
- */
-function marzeotti_portfolio_scripts() {
-	wp_enqueue_style( 'marzeotti-portfolio-fonts', 'https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Livvic:400,600|Nunito+Sans:400,600|Titillium+Web:400,600|PT+Serif:700' );
-}
-// add_action( 'wp_enqueue_scripts', 'marzeotti_portfolio_scripts' );
-
-/**
  * Overwrite default functionality for byline.
  */
-function marzeotti_base_posted_by() {
+function marzeotti_portfolio_posted_by() {
 	$byline = sprintf(
 		/* translators: %s: post author. */
-		esc_html_x( 'by %s', 'post author', 'marzeotti-base' ),
+		esc_html_x( 'by %s', 'post author', 'marzeotti_portfolio' ),
 		'<span class="author"><a href="' . esc_url( home_url( '/' ) ) . 'about/">' . esc_html( get_the_author() ) . '</a></span>'
 	);
 
@@ -128,11 +126,11 @@ add_filter( 'wpseo_twitter_image_size', 'marzeotti_portfolio_set_yoast_twitter_s
  */
 function marzeotti_portfolio_archive_content_after_title() {
 	$content = '';
-	$terms = get_the_terms( $post, 'agency' );
+	$terms   = get_the_terms( $post, 'agency' );
 	if ( ! empty( $terms ) ) {
 		foreach ( $terms as $term ) {
 			$agency_logo_id = get_field( 'logo', $term );
-			$content .= '<span class="agency-logo" aria-label="This project was completed for ' . $term->name . '.">' . wp_get_attachment_image( $agency_logo_id, 'thumbnail', false, array( 'alt' => $term->name . ' logo' ) ) . '</span>';
+			$content       .= '<span class="agency-logo" aria-label="This project was completed for ' . $term->name . '.">' . wp_get_attachment_image( $agency_logo_id, 'thumbnail', false, array( 'alt' => $term->name . ' logo' ) ) . '</span>';
 		}
 	}
 	return $content;
@@ -141,9 +139,10 @@ add_filter( 'archive_content_after_title', 'marzeotti_portfolio_archive_content_
 
 /**
  * Add post type archive page to Yoast breadcrumbs.
+ *
+ * @param array $breadcrumbs An array of individual breadcrumbs provided by Yoast.
  */
 function marzeotti_portfolio_change_yoast_breadcrumbs( $breadcrumbs ) {
-
 	$last_item = array_pop( $breadcrumbs );
 	$post_type = get_post_type( $last_item['id'] );
 
@@ -151,31 +150,31 @@ function marzeotti_portfolio_change_yoast_breadcrumbs( $breadcrumbs ) {
 		case 'talk':
 			$parent_breadcrumb = array(
 				array(
-					'text' => 'Talks',
-					'url' => home_url( '/' ) . 'talks/',
-					'allow_html' => 1
+					'text'       => 'Talks',
+					'url'        => home_url( '/' ) . 'talks/',
+					'allow_html' => 1,
 				),
-				$last_item
+				$last_item,
 			);
 			break;
 		case 'work':
 			$parent_breadcrumb = array(
 				array(
-					'text' => 'Work',
-					'url' => home_url( '/' ) . 'work/',
-					'allow_html' => 1
+					'text'       => 'Work',
+					'url'        => home_url( '/' ) . 'work/',
+					'allow_html' => 1,
 				),
-				$last_item
+				$last_item,
 			);
 			break;
 		case 'post':
 			$parent_breadcrumb = array(
 				array(
-					'text' => 'Snippets',
-					'url' => home_url( '/' ) . 'snippets/',
-					'allow_html' => 1
+					'text'       => 'Snippets',
+					'url'        => home_url( '/' ) . 'snippets/',
+					'allow_html' => 1,
 				),
-				$last_item
+				$last_item,
 			);
 			break;
 		default:
@@ -191,16 +190,18 @@ add_filter( 'wpseo_breadcrumb_links', 'marzeotti_portfolio_change_yoast_breadcru
 
 /**
  * Conditionally change archive content block post link.
+ *
+ * @param array $post_permalink The permalink to the archive post.
  */
 function marzeotti_portfolio_modify_archive_content_post_link( $post_permalink ) {
-	$post_id = url_to_postid( $post_permalink );
+	$post_id      = url_to_postid( $post_permalink ); // phpcs:ignore WordPress.VIP.RestrictedFunctions.url_to_postid_url_to_postid
 	$post_content = get_the_content( $post_id );
-	$project_url = get_field( 'project_url', $post_id );
+	$project_url  = get_field( 'project_url', $post_id );
 
 	if ( empty( $post_content ) && ! empty( $project_url ) ) {
 		$post_permalink = $project_url;
 	}
-	
+
 	return $post_permalink;
 }
 add_filter( 'archive_content_post_link', 'marzeotti_portfolio_modify_archive_content_post_link' );
@@ -209,8 +210,19 @@ add_filter( 'archive_content_post_link', 'marzeotti_portfolio_modify_archive_con
  * Move jQuery to footer.
  */
 function marzeotti_portfolio_jquery_in_footer() {
-    wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, NULL, true );
-    wp_enqueue_script( 'jquery' );
+	wp_deregister_script( 'jquery' );
+	wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, null, true );
+	wp_enqueue_script( 'jquery' );
 }
 add_action( 'wp_enqueue_scripts', 'marzeotti_portfolio_jquery_in_footer' );
+
+/**
+ * Set allowed redirect locations.
+ *
+ * @param array $content An array of allowed redirect hosts.
+ */
+function marzeotti_portfolio_allowed_redirect_hosts( $content ) {
+	$content[] = 'markmarzeotti.com';
+	return $content;
+}
+add_filter( 'allowed_redirect_hosts', 'marzeotti_portfolio_allowed_redirect_hosts', 10 );

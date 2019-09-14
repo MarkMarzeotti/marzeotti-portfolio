@@ -1,65 +1,65 @@
 .modals {
-    display: none;
+	display: none;
 }
 
 .tingle-modal {
-    background: rgba($color__white, .5);
-    pointer-events: all !important;
-    z-index: 100;
+	background: rgba($color__white, .5);
+	pointer-events: all !important;
+	z-index: 100;
 
-    * {
-        pointer-events: all !important;
-    }
+	* {
+		pointer-events: all !important;
+	}
 
-    &--overflow {
-        padding-bottom: 8vh;
-    }
+	&--overflow {
+		padding-bottom: 8vh;
+	}
 
-    .tingle-modal-box {
-        box-shadow: $shadow;
-        margin-left: auto;
-        margin-right: auto; 
+	.tingle-modal-box {
+		box-shadow: $shadow;
+		margin-left: auto;
+		margin-right: auto;
 
-        .modal-close {
-            @include position(absolute, 30px 20px null null);
-        
-            .hamburger {
-            
-                &__top,
-                &__middle,
-                &__bottom {
-                    width: 34px;
-                }
-            
-                &__top {
-                    top: 13px;
-                    transform: rotate(45deg);
-                }
-            
-                &__middle {
-                    opacity: 0;
-                }
-            
-                &__bottom {
-                    top: 13px;
-                    transform: rotate(-45deg);
-                }
-            }
+		.modal-close {
+			@include position(absolute, 30px 20px null null);
 
-            + * {
-                padding-right: 20px;
-            }
-        }
+			.hamburger {
 
-        form {
-            margin-bottom: 20px;
-        }
-    }
+				&__top,
+				&__middle,
+				&__bottom {
+					width: 34px;
+				}
 
-    &.small-modal {
+				&__top {
+					top: 13px;
+					transform: rotate(45deg);
+				}
 
-        .tingle-modal-box {
-            max-width: 400px;
-        }
-    }
+				&__middle {
+					opacity: 0;
+				}
+
+				&__bottom {
+					top: 13px;
+					transform: rotate(-45deg);
+				}
+			}
+
+			+ * {
+				padding-right: 20px;
+			}
+		}
+
+		form {
+			margin-bottom: 20px;
+		}
+	}
+
+	&.small-modal {
+
+		.tingle-modal-box {
+			max-width: 400px;
+		}
+	}
 }

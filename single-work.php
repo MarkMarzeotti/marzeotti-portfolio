@@ -8,8 +8,8 @@
  */
 
 if ( empty( $post->post_content ) ) {
-	$url = esc_url( home_url( '/work/' ) );
-	wp_redirect( $url );
+	$marzeotti_portfolio_url = esc_url( home_url( '/work/' ) );
+	wp_safe_redirect( $marzeotti_portfolio_url );
 	exit;
 }
 
@@ -19,10 +19,11 @@ get_header();
 	<main id="main" class="content__blocks">
 
 		<?php
-		while ( have_posts() ) : the_post();
-		
+		while ( have_posts() ) :
+			the_post();
+
 			the_content();
-			
+
 		endwhile;
 		?>
 

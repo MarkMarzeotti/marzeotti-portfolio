@@ -19,22 +19,23 @@ get_header();
 					<h1>
 						<?php
 						/* translators: %s: search query. */
-						printf( esc_html__( 'Search Results for: %s', 'marzeotti-base' ), get_search_query() );
+						printf( esc_html__( 'Search Results for: %s', 'marzeotti_portfolio' ), get_search_query() );
 						?>
 					</h1>
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="wp-block-portfolio-blocks-archive-content">
 			<div class="archive-content">
 				<div class="archive-content__posts wide">
 
-					<?php 
+					<?php
 					if ( have_posts() ) :
-						while ( have_posts() ) : the_post(); 
+						while ( have_posts() ) :
+							the_post();
 							?>
-				
+
 							<div class="archive-content__item">
 								<div class="archive-content__content">
 									<h2 class="h3"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
@@ -48,17 +49,17 @@ get_header();
 
 						the_posts_navigation();
 
-					else :
-						?>
-						
+						else :
+							?>
+
 						<article>
-							<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try searching?', 'marzeotti-base' ); ?></p>
+							<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try searching?', 'marzeotti_portfolio' ); ?></p>
 							<?php get_search_form(); ?>
 						</article>
 
-						<?php
+							<?php
 					endif;
-					?>
+						?>
 
 				</div>
 			</div>
