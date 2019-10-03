@@ -139,12 +139,12 @@ __webpack_require__(8);
 		return;
 	}
 
-	button = container.getElementsByTagName('button')[0];
+	button = document.getElementById('menu-button');
 	if ('undefined' === typeof button) {
 		return;
 	}
 
-	menu = container.getElementsByTagName('ul')[0];
+	menu = document.getElementById('menu-primary-menu');
 
 	// Hide menu toggle button if menu is empty and return early.
 	if ('undefined' === typeof menu) {

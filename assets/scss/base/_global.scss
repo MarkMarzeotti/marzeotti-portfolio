@@ -1,7 +1,10 @@
 body {
 
-	div:not(.tingle-modal) {
-		z-index: 0;
+	&.tingle-enabled {
+
+		div:not(.tingle-modal) {
+			z-index: 0;
+		}
 	}
 
 	&.noscroll {
@@ -32,15 +35,18 @@ body {
 }
 
 .screen-reader-text {
-	border: 0;
-	clip: rect(1px, 1px, 1px, 1px);
-	clip-path: inset(50%);
 	height: 1px;
 	margin: -1px;
 	overflow: hidden;
 	padding: 0;
 	position: absolute;
 	width: 1px;
+}
+
+.skip-link {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
 	word-wrap: normal !important;
 
 	&:focus {
@@ -60,6 +66,11 @@ body {
 		width: auto;
 		z-index: 100000; /* Above WP toolbar. */
 	}
+}
+
+.skip-to-content:focus {
+	left: 260px;
+	top: 22px;
 }
 
 .navigation-overlay {

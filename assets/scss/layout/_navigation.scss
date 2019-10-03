@@ -1,15 +1,18 @@
 .nav {
 
 	&__button {
+		@include position(absolute, 0 0 null null);
 		appearance: none;
 		background-color: transparent;
 		border: 0;
 		cursor: pointer;
-		float: right;
-		margin: -20px;
+		margin-right: -20px;
 		padding: 20px;
-		position: relative;
 		z-index: 60;
+
+		@include grid-media($medium-screen-grid) {
+			margin-top: 5px;
+		}
 
 		&:hover {
 
@@ -123,7 +126,7 @@
 			ul {
 				display: block;
 				float: right;
-				padding-right: 80px;
+				padding-right: 120px;
 				position: relative;
 
 				li {

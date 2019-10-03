@@ -30,7 +30,7 @@
 
 <body <?php body_class(); ?>>
 <div id="page">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'marzeotti_portfolio' ); ?></a>
+	<a class="skip-link skip-to-content screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'marzeotti_portfolio' ); ?></a>
 
 	<header id="masthead" class="header">
 		<div class="header__logo">
@@ -38,7 +38,21 @@
 		</div>
 
 		<nav id="site-navigation" class="header__nav nav">
-			<button class="nav__button" aria-controls="primary-menu" aria-expanded="false">
+			<div class="nav__container nav__container--button-menu">
+				<?php
+				wp_nav_menu(
+					array(
+						'container'      => false,
+						'depth'          => 1,
+						'menu_class'     => 'nav__level',
+						'theme_location' => 'button-menu',
+						'walker'         => new Marzeotti_Base_Walker_Nav_Menu(),
+					)
+				);
+				?>
+			</div>
+
+			<button id="menu-button" class="nav__button" aria-controls="primary-menu" aria-expanded="false">
 				<span class="screen-reader-text"><?php esc_html_e( 'Primary Menu', 'marzeotti_portfolio' ); ?></span>
 				<span class="hamburger">
 					<span class="hamburger__top"></span>
@@ -54,20 +68,6 @@
 						'container'      => false,
 						'menu_class'     => 'nav__level',
 						'theme_location' => 'primary-menu',
-						'walker'         => new Marzeotti_Base_Walker_Nav_Menu(),
-					)
-				);
-				?>
-			</div>
-
-			<div class="nav__container nav__container--button-menu">
-				<?php
-				wp_nav_menu(
-					array(
-						'container'      => false,
-						'depth'          => 1,
-						'menu_class'     => 'nav__level',
-						'theme_location' => 'button-menu',
 						'walker'         => new Marzeotti_Base_Walker_Nav_Menu(),
 					)
 				);

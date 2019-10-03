@@ -9,9 +9,9 @@
 
 	var navigationOverlay = document.createElement( 'div' );
 	navigationOverlay.className = 'navigation-overlay';
-			
+
 	navigationOverlay.onclick = function() {
-		document.body.removeChild( navigationOverlay ); 
+		document.body.removeChild( navigationOverlay );
 		document.body.classList.remove( 'noscroll' );
 		container.className = container.className.replace( ' toggled', '' );
 		button.setAttribute( 'aria-expanded', 'false' );
@@ -23,12 +23,12 @@
 		return;
 	}
 
-	button = container.getElementsByTagName( 'button' )[0];
+	button = document.getElementById( 'menu-button' );
 	if ( 'undefined' === typeof button ) {
 		return;
 	}
 
-	menu = container.getElementsByTagName( 'ul' )[0];
+	menu = document.getElementById( 'menu-primary-menu' );
 
 	// Hide menu toggle button if menu is empty and return early.
 	if ( 'undefined' === typeof menu ) {
@@ -43,7 +43,7 @@
 
 	button.onclick = function() {
 		if ( -1 !== container.className.indexOf( 'toggled' ) ) {
-			document.body.removeChild( navigationOverlay ); 
+			document.body.removeChild( navigationOverlay );
             document.body.classList.remove( 'noscroll' );
 			container.className = container.className.replace( ' toggled', '' );
 			button.setAttribute( 'aria-expanded', 'false' );
