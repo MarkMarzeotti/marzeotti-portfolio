@@ -60,7 +60,7 @@
 
 	<footer id="footer" class="footer">
 		<div class="footer__copyright">
-			<?php $marzeotti_portfolio_date = date( 'Y' ); ?>
+			<?php $marzeotti_portfolio_date = gmdate( 'Y' ); ?>
 			<p>&copy; <?php echo esc_html( $marzeotti_portfolio_date ); ?> <?php bloginfo( 'name' ); ?>. All Rights Reserved.</p>
 		</div>
 

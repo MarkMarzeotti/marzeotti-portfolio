@@ -102,7 +102,7 @@ function marzeotti_portfolio_posted_by() {
 		'<span class="author"><a href="' . esc_url( home_url( '/' ) ) . 'about/">' . esc_html( get_the_author() ) . '</a></span>'
 	);
 
-	echo '<span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
+	echo '<span class="byline"> ' . $byline . '</span>'; // phpcs:ignore
 }
 
 /**
@@ -211,7 +211,7 @@ add_filter( 'archive_content_post_link', 'marzeotti_portfolio_modify_archive_con
  */
 function marzeotti_portfolio_jquery_in_footer() {
 	wp_deregister_script( 'jquery' );
-	wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, null, true );
+	wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, '1.12.4', true );
 	wp_enqueue_script( 'jquery' );
 }
 add_action( 'wp_enqueue_scripts', 'marzeotti_portfolio_jquery_in_footer' );
@@ -226,3 +226,11 @@ function marzeotti_portfolio_allowed_redirect_hosts( $content ) {
 	return $content;
 }
 add_filter( 'allowed_redirect_hosts', 'marzeotti_portfolio_allowed_redirect_hosts', 10 );
+
+/**
+ * Remove plugin provided Maps API script.
+ */
+function marzeotti_portfolio_remove_maps_api_script() {
+	wp_dequeue_script( 'google-maps' );
+}
+add_action( 'wp_print_scripts', 'marzeotti_portfolio_remove_maps_api_script', 10 );

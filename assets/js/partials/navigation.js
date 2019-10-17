@@ -28,7 +28,7 @@
 		return;
 	}
 
-	menu = document.getElementById( 'menu-primary-menu' );
+	menu = document.getElementById( 'primary-menu' );
 
 	// Hide menu toggle button if menu is empty and return early.
 	if ( 'undefined' === typeof menu ) {

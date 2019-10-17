@@ -66,6 +66,7 @@
 				wp_nav_menu(
 					array(
 						'container'      => false,
+						'menu_id'        => 'primary-menu',
 						'menu_class'     => 'nav__level',
 						'theme_location' => 'primary-menu',
 						'walker'         => new Marzeotti_Base_Walker_Nav_Menu(),
