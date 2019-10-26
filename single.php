@@ -81,6 +81,22 @@ get_header();
 					);
 					?>
 				</div>
+
+				<?php
+				$tags = get_the_tags();
+
+				if ( $tags !== false ) :
+
+					echo '<ul class="content__tags">';
+
+					foreach ( $tags as $tag ) {
+						echo '<li><a href="' . get_term_link( $tag->term_id ) . '">' . $tag->name . '</a></li>';
+					}
+
+					echo '</ul>';
+
+				endif;
+				?>
 			</article>
 
 		<?php endwhile; ?>

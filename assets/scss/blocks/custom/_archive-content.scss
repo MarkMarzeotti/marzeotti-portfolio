@@ -21,16 +21,24 @@
 					display: flex;
 					flex-flow: row wrap;
 
-					.archive-content__item {
-						width: 100%;
+					.archive-content {
 
-						@include grid-media($medium-screen-grid) {
-							margin-right: 40px;
-							width: calc(50% - 20px);
+						&__item {
+							flex-flow: row wrap;
+
+							@include grid-media($medium-screen-grid) {
+								margin-right: 40px;
+								width: calc(50% - 20px);
+							}
+
+							&:nth-child(even) {
+								margin-right: 0;
+							}
 						}
 
-						&:nth-child(even) {
+						&__image {
 							margin-right: 0;
+							width: 100%;
 						}
 					}
 				}

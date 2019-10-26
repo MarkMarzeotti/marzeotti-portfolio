@@ -160,4 +160,32 @@
 			}
 		}
 	}
+
+	&__tags {
+		display: block;
+		margin-top: 90px;
+
+		li {
+			display: inline;
+			margin-right: 20px;
+
+			a {
+				background-color: transparent;
+				border: 2px solid $color__mine-shaft;
+				border-radius: 20px;
+				color: $color__mine-shaft;
+				padding: 10px 20px;
+				text-decoration: none;
+				transition: background-color 300ms ease, color 300ms ease;
+			}
+
+			&:hover {
+
+				a {
+					background-color: $color__mine-shaft;
+					color: $color__white;
+				}
+			}
+		}
+	}
 }

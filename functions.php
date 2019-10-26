@@ -24,6 +24,7 @@ function marzeotti_portfolio_setup() {
 	 * Overide medium size to crop.
 	 */
 	add_image_size( 'medium', 600, 460, true );
+	add_image_size( 'post', 540, 300, true );
 }
 add_action( 'after_setup_theme', 'marzeotti_portfolio_setup' );
 
@@ -234,3 +235,8 @@ function marzeotti_portfolio_remove_maps_api_script() {
 	wp_dequeue_script( 'google-maps' );
 }
 add_action( 'wp_print_scripts', 'marzeotti_portfolio_remove_maps_api_script', 10 );
+
+/**
+ * Custom template tags for this theme.
+ */
+require get_template_directory() . '/inc/template-tags.php';

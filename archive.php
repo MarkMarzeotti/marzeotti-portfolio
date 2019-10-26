@@ -7,13 +7,7 @@
  * @package Marzeotti_Portfolio
  */
 
-$marzeotti_portfolio_taxonomy           = get_query_var( 'taxonomy' );
-$marzeotti_portfolio_allowed_taxonomies = array(
-	'post_tag',
-	'category',
-);
-
-if ( ! in_array( $marzeotti_portfolio_taxonomy, $marzeotti_portfolio_allowed_taxonomies, true ) ) {
+if ( is_author() || is_tax( 'agency' ) ) {
 	$marzeotti_portfolio_url = esc_url( home_url( '/' ) );
 	wp_safe_redirect( $marzeotti_portfolio_url );
 	exit;
@@ -23,36 +17,63 @@ get_header();
 ?>
 
 	<div class="container">
-		<main id="main" class="content__main">
+		<main id="main" class="content__blocks page">
 
-			<?php if ( have_posts() ) : ?>
+			<div class="wp-block-portfolio-blocks-page-heading">
+				<div class="page-heading">
+					<div class="page-heading__content">
+						<span>Snippets</span>
+						<h1><?php single_term_title(); ?></h1>
+					</div>
+				</div>
+			</div>
 
-				<header>
-					<?php
-					the_archive_title( '<h1>', '</h1>' );
-					the_archive_description( '<p>', '</p>' );
-					?>
-				</header>
 
-				<?php
-				while ( have_posts() ) :
-					the_post();
+			<div class="wp-block-portfolio-blocks-archive-content">
+				<div class="archive-content">
+					<div class="archive-content__posts column">
 
-					get_template_part( 'template-parts/content', get_post_type() );
+						<?php
+						if ( have_posts() ) :
 
-				endwhile;
+							while ( have_posts() ) :
+								the_post();
 
-				the_posts_navigation();
+								$post_permalink = get_permalink();
 
-				else :
+								$target = strpos( $post_permalink, home_url( '/' ) ) !== false ? '' : ' target="_blank"';
+								?>
 
-					get_template_part( 'template-parts/content', 'none' );
+								<div class="archive-content__item">
+									<?php if ( has_post_thumbnail() ) : ?>
+										<div class="archive-content__image">
+											<a href="<?php echo esc_url( $post_permalink ); ?>"<?php echo $target; ?>>
+												<?php the_post_thumbnail( 'post', array( 'alt' => get_the_title() ) ); ?>
+											</a>
+										</div>
+									<?php endif; ?>
+									<div class="archive-content__content">
+										<h2 class="h3"><a href="<?php echo esc_url( $post_permalink ); ?>"<?php echo $target; ?>><?php the_title(); ?></a></h2>
+										<?php
+										the_excerpt();
 
-			endif;
-				?>
+										$button_text = $post->post_type === 'post' ? 'See How It\'s Done' : 'View ' . get_the_title();
+										?>
+										<a class="archive-content__button" href="<?php echo esc_url( $post_permalink ); ?>"<?php echo $target; ?>><?php echo esc_html( $button_text ); ?></a>
+									</div>
+								</div>
+
+								<?php
+							endwhile;
+
+						endif;
+						?>
+
+					</div>
+				</div>
+			</div>
 
 		</main>
-		<?php get_sidebar(); ?>
 	</div>
 
 <?php
