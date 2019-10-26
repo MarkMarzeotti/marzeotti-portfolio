@@ -41,22 +41,6 @@
 		menu.className += ' nav-menu';
 	}
 
-	button.onclick = function() {
-		if ( -1 !== container.className.indexOf( 'toggled' ) ) {
-			document.body.removeChild( navigationOverlay );
-            document.body.classList.remove( 'noscroll' );
-			container.className = container.className.replace( ' toggled', '' );
-			button.setAttribute( 'aria-expanded', 'false' );
-			menu.setAttribute( 'aria-expanded', 'false' );
-		} else {
-			document.body.appendChild( navigationOverlay );
-			document.body.classList.add( 'noscroll' );
-			container.className += ' toggled';
-			button.setAttribute( 'aria-expanded', 'true' );
-			menu.setAttribute( 'aria-expanded', 'true' );
-		}
-    };
-
 	// Get all the link elements within the menu.
 	links    = menu.getElementsByTagName( 'a' );
 
@@ -64,7 +48,32 @@
 	for ( i = 0, len = links.length; i < len; i++ ) {
 		links[i].addEventListener( 'focus', toggleFocus, true );
 		links[i].addEventListener( 'blur', toggleFocus, true );
+		// if ( ! links[i].offsetWidth && ! links[i].offsetHeight && ! links[i].getClientRects().length ) {
+			links[i].tabIndex = -1;
+		// }
 	}
+
+	button.onclick = function() {
+		if ( -1 !== container.className.indexOf( 'toggled' ) ) {
+			document.body.removeChild( navigationOverlay );
+            document.body.classList.remove( 'noscroll' );
+			container.className = container.className.replace( ' toggled', '' );
+			button.setAttribute( 'aria-expanded', 'false' );
+			menu.setAttribute( 'aria-expanded', 'false' );
+			for ( i = 0, len = links.length; i < len; i++ ) {
+				links[i].tabIndex = -1;
+			}
+		} else {
+			document.body.appendChild( navigationOverlay );
+			document.body.classList.add( 'noscroll' );
+			container.className += ' toggled';
+			button.setAttribute( 'aria-expanded', 'true' );
+			menu.setAttribute( 'aria-expanded', 'true' );
+			for ( i = 0, len = links.length; i < len; i++ ) {
+				links[i].tabIndex = 0;
+			}
+		}
+    };
 
 	/**
 	 * Sets or removes .focus class on an element.
