@@ -24,7 +24,7 @@
 					.archive-content {
 
 						&__item {
-							flex-flow: row wrap;
+							display: block;
 
 							@include grid-media($medium-screen-grid) {
 								margin-right: 40px;
@@ -41,7 +41,6 @@
 							width: 100%;
 
 							img {
-								float: left;
 								height: 300px;
 								object-fit: cover;
 								width: 100%;
