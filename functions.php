@@ -24,7 +24,6 @@ function marzeotti_portfolio_setup() {
 	 * Overide medium size to crop.
 	 */
 	add_image_size( 'medium', 600, 460, true );
-	add_image_size( 'post', 540, 300, true );
 }
 add_action( 'after_setup_theme', 'marzeotti_portfolio_setup' );
 

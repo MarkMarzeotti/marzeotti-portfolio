@@ -39,6 +39,13 @@
 						&__image {
 							margin-right: 0;
 							width: 100%;
+
+							img {
+								float: left;
+								height: 300px;
+								object-fit: cover;
+								width: 100%;
+							}
 						}
 					}
 				}

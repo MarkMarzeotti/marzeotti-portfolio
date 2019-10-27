@@ -48,7 +48,7 @@ get_header();
 									<?php if ( has_post_thumbnail() ) : ?>
 										<div class="archive-content__image">
 											<a href="<?php echo esc_url( $post_permalink ); ?>"<?php echo $target; ?>>
-												<?php the_post_thumbnail( 'post', array( 'alt' => get_the_title() ) ); ?>
+												<?php the_post_thumbnail( 'medium', array( 'alt' => get_the_title() ) ); ?>
 											</a>
 										</div>
 									<?php endif; ?>
