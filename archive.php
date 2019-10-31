@@ -8,8 +8,8 @@
  */
 
 if ( is_author() || is_tax( 'agency' ) ) {
-	$marzeotti_portfolio_url = esc_url( home_url( '/' ) );
-	wp_safe_redirect( $marzeotti_portfolio_url );
+	$mzp_url = esc_url( home_url( '/' ) );
+	wp_safe_redirect( $mzp_url );
 	exit;
 }
 
@@ -39,27 +39,27 @@ get_header();
 							while ( have_posts() ) :
 								the_post();
 
-								$post_permalink = get_permalink();
+								$mzp_post_permalink = get_permalink();
 
-								$target = strpos( $post_permalink, home_url( '/' ) ) !== false ? '' : ' target="_blank"';
+								$mzp_target = strpos( $mzp_post_permalink, home_url( '/' ) ) !== false ? '' : ' target="_blank"';
 								?>
 
 								<div class="archive-content__item">
 									<?php if ( has_post_thumbnail() ) : ?>
 										<div class="archive-content__image">
-											<a href="<?php echo esc_url( $post_permalink ); ?>"<?php echo $target; ?>>
+											<a href="<?php echo esc_url( $mzp_post_permalink ); ?>"<?php echo esc_attr( $mzp_target ); ?>>
 												<?php the_post_thumbnail( 'medium', array( 'alt' => get_the_title() ) ); ?>
 											</a>
 										</div>
 									<?php endif; ?>
 									<div class="archive-content__content">
-										<h2 class="h3"><a href="<?php echo esc_url( $post_permalink ); ?>"<?php echo $target; ?>><?php the_title(); ?></a></h2>
+										<h2 class="h3"><a href="<?php echo esc_url( $mzp_post_permalink ); ?>"<?php echo esc_attr( $mzp_target ); ?>><?php the_title(); ?></a></h2>
 										<?php
 										the_excerpt();
 
-										$button_text = $post->post_type === 'post' ? 'See How It\'s Done' : 'View ' . get_the_title();
+										$mzp_button_text = 'post' === $post->post_type ? 'See How It\'s Done' : 'View ' . get_the_title();
 										?>
-										<a class="archive-content__button" href="<?php echo esc_url( $post_permalink ); ?>"<?php echo $target; ?>><?php echo esc_html( $button_text ); ?></a>
+										<a class="archive-content__button" href="<?php echo esc_url( $mzp_post_permalink ); ?>"<?php echo esc_attr( $mzp_target ); ?>><?php echo esc_html( $mzp_button_text ); ?></a>
 									</div>
 								</div>
 

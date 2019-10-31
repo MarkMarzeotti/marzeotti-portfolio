@@ -14,29 +14,29 @@
 	</div>
 
 	<?php
-	$marzeotti_portfolio_args = array(
+	$mzp_args = array(
 		'post_type'              => array( 'modal' ),
 		'post_status'            => array( 'publish' ),
 		'posts_per_page'         => 100,
 	);
 
-	$marzeotti_portfolio_query = new WP_Query( $marzeotti_portfolio_args );
+	$mzp_query = new WP_Query( $mzp_args );
 
-	if ( $marzeotti_portfolio_query->have_posts() ) :
+	if ( $mzp_query->have_posts() ) :
 		?>
 
 		<div class="modals">
 
 			<?php
-			while ( $marzeotti_portfolio_query->have_posts() ) :
-				$marzeotti_portfolio_query->the_post();
+			while ( $mzp_query->have_posts() ) :
+				$mzp_query->the_post();
 
-				$marzeotti_portfolio_modal_id = sanitize_title( $post->post_title );
+				$mzp_modal_id = sanitize_title( $post->post_title );
 				?>
 
-				<div id="<?php echo esc_attr( $marzeotti_portfolio_modal_id ); ?>">
-					<button class="nav__button modal-close" aria-controls="<?php echo esc_attr( $marzeotti_portfolio_modal_id ); ?>" aria-expanded="false">
-						<span class="screen-reader-text"><?php esc_html_e( 'Close', 'marzeotti_portfolio' ); ?></span>
+				<div id="<?php echo esc_attr( $mzp_modal_id ); ?>">
+					<button class="nav__button modal-close" aria-controls="<?php echo esc_attr( $mzp_modal_id ); ?>" aria-expanded="false">
+						<span class="screen-reader-text"><?php esc_html_e( 'Close', 'marzeotti-portfolio' ); ?></span>
 						<span class="hamburger">
 							<span class="hamburger__top"></span>
 							<span class="hamburger__middle"></span>
@@ -60,8 +60,8 @@
 
 	<footer id="footer" class="footer">
 		<div class="footer__copyright">
-			<?php $marzeotti_portfolio_date = gmdate( 'Y' ); ?>
-			<p>&copy; <?php echo esc_html( $marzeotti_portfolio_date ); ?> <?php bloginfo( 'name' ); ?>. All Rights Reserved.</p>
+			<?php $mzp_date = gmdate( 'Y' ); ?>
+			<p>&copy; <?php echo esc_html( $mzp_date ); ?> <?php bloginfo( 'name' ); ?>. All Rights Reserved.</p>
 		</div>
 
 		<div class="footer__social">

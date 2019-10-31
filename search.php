@@ -19,7 +19,7 @@ get_header();
 					<h1>
 						<?php
 						/* translators: %s: search query. */
-						printf( esc_html__( 'Search Results for: %s', 'marzeotti_portfolio' ), get_search_query() );
+						printf( esc_html__( 'Search Results for: %s', 'marzeotti-portfolio' ), get_search_query() );
 						?>
 					</h1>
 				</div>
@@ -53,7 +53,7 @@ get_header();
 							?>
 
 						<article>
-							<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try searching?', 'marzeotti_portfolio' ); ?></p>
+							<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try searching?', 'marzeotti-portfolio' ); ?></p>
 							<?php get_search_form(); ?>
 						</article>
 

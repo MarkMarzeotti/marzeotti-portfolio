@@ -8,8 +8,8 @@
  */
 
 if ( empty( $post->post_content ) ) {
-	$marzeotti_portfolio_url = esc_url( home_url( '/work/' ) );
-	wp_safe_redirect( $marzeotti_portfolio_url );
+	$mzp_url = esc_url( home_url( '/work/' ) );
+	wp_safe_redirect( $mzp_url );
 	exit;
 }
 

@@ -7,16 +7,16 @@
  * @package Marzeotti_Portfolio
  */
 
-$marzeotti_portfolio_post_type          = get_post_type( $post );
-$marzeotti_portfolio_allowed_post_types = array(
+$mzp_post_type          = get_post_type( $post );
+$mzp_allowed_post_types = array(
 	'talk',
 	'work',
 	'post',
 );
 
-if ( ! in_array( $marzeotti_portfolio_post_type, $marzeotti_portfolio_allowed_post_types, true ) ) {
-	$marzeotti_portfolio_url = esc_url( home_url( '/' ) );
-	wp_safe_redirect( $marzeotti_portfolio_url );
+if ( ! in_array( $mzp_post_type, $mzp_allowed_post_types, true ) ) {
+	$mzp_url = esc_url( home_url( '/' ) );
+	wp_safe_redirect( $mzp_url );
 	exit;
 }
 
@@ -50,7 +50,7 @@ get_header();
 						<div>
 							<?php
 							marzeotti_base_posted_on();
-							marzeotti_portfolio_posted_by();
+							mzp_posted_by();
 							?>
 						</div>
 					<?php endif; ?>
@@ -62,7 +62,7 @@ get_header();
 						sprintf(
 							wp_kses(
 								/* translators: %s: Name of current post. Only visible to screen readers */
-								__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'marzeotti_portfolio' ),
+								__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'marzeotti-portfolio' ),
 								array(
 									'span' => array(
 										'class' => array(),
@@ -75,7 +75,7 @@ get_header();
 
 					wp_link_pages(
 						array(
-							'before' => '<div>' . esc_html__( 'Pages:', 'marzeotti_portfolio' ),
+							'before' => '<div>' . esc_html__( 'Pages:', 'marzeotti-portfolio' ),
 							'after'  => '</div>',
 						)
 					);
@@ -83,14 +83,14 @@ get_header();
 				</div>
 
 				<?php
-				$tags = get_the_tags();
+				$mzp_tags = get_the_tags();
 
-				if ( $tags !== false ) :
+				if ( false !== $mzp_tags ) :
 
 					echo '<ul class="content__tags">';
 
-					foreach ( $tags as $tag ) {
-						echo '<li><a href="' . get_term_link( $tag->term_id ) . '">' . $tag->name . '</a></li>';
+					foreach ( $mzp_tags as $mzp_tag ) {
+						echo '<li><a href="' . esc_url( get_term_link( $mzp_tag->term_id ) ) . '">' . esc_html( $mzp_tag->name ) . '</a></li>';
 					}
 
 					echo '</ul>';
