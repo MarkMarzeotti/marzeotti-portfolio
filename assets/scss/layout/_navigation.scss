@@ -1,5 +1,11 @@
 .nav {
 
+	@include grid-media($medium-screen-grid) {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: flex-end;
+	}
+
 	&__button {
 		@include position(absolute, 0 0 null null);
 		appearance: none;
@@ -11,7 +17,7 @@
 		z-index: 60;
 
 		@include grid-media($medium-screen-grid) {
-			margin-top: 5px;
+			display: none;
 		}
 
 		&:hover {
@@ -37,6 +43,7 @@
 			box-sizing: border-box;
 			display: flex;
 			flex-flow: row wrap;
+			justify-content: flex-start;
 			overflow: scroll;
 			padding: 100px 40px 40px;
 			transition: right 300ms ease,
@@ -45,16 +52,22 @@
 			z-index: 50;
 
 			@include grid-media($medium-screen-grid) {
-				padding: 140px 40px 80px;
-				right: -450px;
-				width: 450px;
+				@include position(relative, auto auto auto null);
+				background-color: transparent;
+				justify-content: flex-end;
+				overflow: visible;
+				padding: 0;
+				width: auto;
 			}
 
 			ul {
 				box-sizing: border-box;
 				display: block;
-				float: left;
 				width: 100%;
+
+				@include grid-media($medium-screen-grid) {
+					width: auto;
+				}
 
 				li {
 					display: block;
@@ -63,17 +76,7 @@
 					width: 100%;
 
 					@include grid-media($medium-screen-grid) {
-
-						&:hover {
-
-							a {
-								padding-left: 10px;
-
-								&::before {
-									background-color: $color__mine-shaft;
-								}
-							}
-						}
+						width: auto;
 					}
 
 					a {
@@ -92,7 +95,19 @@
 						width: 100%;
 
 						@include grid-media($medium-screen-grid) {
-							padding-left: 30px;
+							font-family: $font__secondary;
+							font-size: 20px;
+							font-weight: 400;
+							padding-left: 15px;
+							padding-right: 15px;
+							transition: color 300ms ease;
+						}
+
+						&:hover {
+
+							@include grid-media($medium-screen-grid) {
+								color: $color__allports;
+							}
 						}
 
 						&::before {
@@ -101,13 +116,32 @@
 							content: '';
 							transition: background-color 300ms ease;
 							width: 4px;
+
+							@include grid-media($medium-screen-grid) {
+								height: 4px;
+								left: 10px;
+								right: 10px;
+								top: auto;
+								width: auto;
+							}
 						}
 					}
 
 					&.nav__item--is-current {
 
-						a::before {
-							background-color: $color__mine-shaft;
+						a {
+
+							@include grid-media($medium-screen-grid) {
+								color: $color__allports;
+							}
+
+							&::before {
+								background-color: $color__mine-shaft;
+
+								@include grid-media($medium-screen-grid) {
+									background-color: $color__allports;
+								}
+							}
 						}
 					}
 				}
@@ -121,15 +155,22 @@
 
 			@include grid-media($medium-screen-grid) {
 				@include position(relative, auto null null auto);
+				float: right;
+				margin-top: 12px;
 			}
 
 			ul {
 				display: block;
-				float: right;
-				padding-right: 120px;
 				position: relative;
 
 				li {
+
+					&.btn {
+
+						@include grid-media($medium-screen-grid) {
+							margin: 0 0 0 40px;
+						}
+					}
 
 					a {
 						white-space: nowrap;

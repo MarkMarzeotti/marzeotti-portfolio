@@ -28,20 +28,6 @@
 		</div>
 
 		<nav id="site-navigation" class="header__nav nav">
-			<div class="nav__container nav__container--button-menu">
-				<?php
-				wp_nav_menu(
-					array(
-						'container'      => false,
-						'depth'          => 1,
-						'menu_class'     => 'nav__level',
-						'theme_location' => 'button-menu',
-						'walker'         => new Marzeotti_Base_Walker_Nav_Menu(),
-					)
-				);
-				?>
-			</div>
-
 			<button id="menu-button" class="nav__button" aria-controls="primary-menu" aria-expanded="false">
 				<span class="screen-reader-text"><?php esc_html_e( 'Primary Menu', 'marzeotti-portfolio' ); ?></span>
 				<span class="hamburger">
@@ -51,7 +37,7 @@
 				</span>
 			</button>
 
-			<div class="nav__container nav__container--primary-menu">
+			<div id="nav-container" class="nav__container nav__container--primary-menu">
 				<?php
 				wp_nav_menu(
 					array(
@@ -59,7 +45,21 @@
 						'menu_id'        => 'primary-menu',
 						'menu_class'     => 'nav__level',
 						'theme_location' => 'primary-menu',
-						'walker'         => new Marzeotti_Base_Walker_Nav_Menu(),
+						'walker'         => new Marz_Walker_Nav_Menu(),
+					)
+				);
+				?>
+			</div>
+
+			<div class="nav__container nav__container--button-menu">
+				<?php
+				wp_nav_menu(
+					array(
+						'container'      => false,
+						'depth'          => 1,
+						'menu_class'     => 'nav__level',
+						'theme_location' => 'button-menu',
+						'walker'         => new Marz_Walker_Nav_Menu(),
 					)
 				);
 				?>
