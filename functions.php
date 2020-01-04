@@ -17,7 +17,7 @@ function mzp_setup() {
 	 * If you're building a theme based on Marzeotti Base, use a find and replace
 	 * to change 'marzeotti-portfolio' to the name of your theme in all the template files.
 	 */
-	load_theme_textdomain( 'marzeotti-portfolio', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'marzeotti-portfolio', get_stylesheet_directory() . '/languages' );
 
 	/**
 	 * Add default posts and comments RSS feed links to head.
@@ -178,22 +178,22 @@ add_filter( 'excerpt_more', 'mzp_excerpt_more' );
 /**
  * Custom template tags for this theme.
  */
-require get_template_directory() . '/inc/template-tags.php';
+require get_stylesheet_directory() . '/inc/template-tags.php';
 
 /**
  * Functions which enhance the theme by hooking into WordPress.
  */
-require get_template_directory() . '/inc/template-functions.php';
+require get_stylesheet_directory() . '/inc/template-functions.php';
 
 /**
  * Additional custom post types and custom taxonomies.
  */
-require get_template_directory() . '/inc/post-types-taxonomies.php';
+require get_stylesheet_directory() . '/inc/post-types-taxonomies.php';
 
 /**
  * A custom walker class to modify the navigation markup.
  */
-require get_template_directory() . '/inc/class-marz-walker-nav-menu.php';
+require get_stylesheet_directory() . '/inc/class-marz-walker-nav-menu.php';
 
 /**
  * Add post taxonomies to Archive Content posts.

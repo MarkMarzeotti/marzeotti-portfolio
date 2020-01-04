@@ -22,6 +22,7 @@
 
 		.modal-close {
 			@include position(absolute, 0 20px null null);
+			display: block;
 
 			.hamburger {
 
