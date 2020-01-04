@@ -2,6 +2,8 @@
 /**
  * Marzeotti Portfolio functions and definitions
  *
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ *
  * @package Marzeotti_Portfolio
  */
 
@@ -10,13 +12,40 @@
  */
 function mzp_setup() {
 	/*
+	 * Make theme available for translation.
+	 * Translations can be filed in the /languages/ directory.
+	 * If you're building a theme based on Marzeotti Base, use a find and replace
+	 * to change 'marzeotti-portfolio' to the name of your theme in all the template files.
+	 */
+	load_theme_textdomain( 'marzeotti-portfolio', get_template_directory() . '/languages' );
+
+	/**
+	 * Add default posts and comments RSS feed links to head.
+	 */
+	add_theme_support( 'automatic-feed-links' );
+
+	/*
+	 * Enable the title tag controlled by WordPress.
+	 */
+	add_theme_support( 'title-tag' );
+
+	/*
+	 * Enable support for Post Thumbnails on posts and pages.
+	 *
+	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+	 */
+	add_theme_support( 'post-thumbnails' );
+
+	/*
 	 * Register menu locations.
 	 *
 	 * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
 	 */
 	register_nav_menus(
 		array(
-			'button-menu' => esc_html__( 'Button Menu', 'marzeotti-portfolio' ),
+			'primary-menu' => esc_html__( 'Primary Menu', 'marzeotti-portfolio' ),
+			'button-menu'  => esc_html__( 'Button Menu', 'marzeotti-portfolio' ),
+			'footer-menu'  => esc_html__( 'Footer Menu', 'marzeotti-portfolio' ),
 		)
 	);
 
@@ -24,6 +53,50 @@ function mzp_setup() {
 	 * Overide medium size to crop.
 	 */
 	add_image_size( 'medium', 600, 460, true );
+
+	/**
+	 * Add support for core custom logo.
+	 *
+	 * @link https://codex.wordpress.org/Theme_Logo
+	 */
+	add_theme_support(
+		'custom-logo',
+		array(
+			'height'      => 250,
+			'width'       => 250,
+			'flex-width'  => true,
+			'flex-height' => true,
+		)
+	);
+
+	/**
+	 * Add support for wide and full width blocks.
+	 */
+	add_theme_support( 'align-wide' );
+
+	/**
+	 * Add a custom color pallete
+	 */
+	add_theme_support(
+		'editor-color-palette',
+		array(
+			array(
+				'name'  => __( 'Black', 'marzeotti-portfolio' ),
+				'slug'  => 'black',
+				'color' => '#000000',
+			),
+			array(
+				'name'  => __( 'White', 'marzeotti-portfolio' ),
+				'slug'  => 'white',
+				'color' => '#ffffff',
+			),
+			array(
+				'name'  => __( 'Gallery', 'marzeotti-portfolio' ),
+				'slug'  => 'gallery',
+				'color' => '#eeeeee',
+			),
+		)
+	);
 }
 add_action( 'after_setup_theme', 'mzp_setup' );
 
@@ -31,10 +104,48 @@ add_action( 'after_setup_theme', 'mzp_setup' );
  * Add Google Analytics scripts to the head.
  */
 function mzp_add_google_analytics() {
-	wp_enqueue_script( 'google-analytics', 'https://www.googletagmanager.com/gtag/js?id=UA-84468069-6', array(), '1.0', false );
-	wp_add_inline_script( 'mytheme-typekit', 'window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag(\'js\', new Date());gtag(\'config\', \'UA-84468069-6\');' );
+	wp_enqueue_script( 'google-analytics', 'https://www.googletagmanager.com/gtag/js?id=UA-00000000-0', array(), '1.0', false );
+	wp_add_inline_script( 'marz-analytics', 'window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag(\'js\', new Date());gtag(\'config\', \'UA-00000000-0\');' );
 }
 add_action( 'wp_enqueue_scripts', 'mzp_add_google_analytics' );
+
+/**
+ * Enqueue scripts and styles.
+ */
+function mzp_scripts() {
+	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Merriweather:400,700|Roboto:400,400i,700,700i', array(), '1' );
+	wp_enqueue_style( 'marzeotti-portfolio-style', get_stylesheet_directory_uri() . '/dist/css/style.css', array(), wp_get_theme()->get( 'Version' ) );
+	wp_enqueue_script( 'marzeotti-portfolio-script', get_stylesheet_directory_uri() . '/dist/js/app.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true );
+	wp_localize_script(
+		'marzeotti-portfolio-script',
+		'marzeottiBaseGlobal',
+		array(
+			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+			'nonce'   => wp_create_nonce( 'mzp_more_post_ajax_nonce' ),
+		)
+	);
+}
+add_action( 'wp_enqueue_scripts', 'mzp_scripts' );
+
+/**
+ * Enqueue admin scripts and styles.
+ */
+function mzp_admin_scripts() {
+	wp_enqueue_style( 'admin-styles', get_stylesheet_directory_uri() . '/dist/css/admin.css', array(), wp_get_theme()->get( 'Version' ) );
+	wp_enqueue_script( 'admin-script', get_stylesheet_directory_uri() . '/dist/js/admin.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true );
+}
+add_action( 'admin_enqueue_scripts', 'mzp_admin_scripts' );
+
+/**
+ * Remove WordPress base menu classes.
+ *
+ * @param array  $classes An array of classes for this menu item.
+ * @param object $item    The post object for the menu item.
+ */
+function mzp_discard_menu_classes( $classes, $item ) {
+	return (array) get_post_meta( $item->ID, '_menu_item_classes', true );
+}
+add_filter( 'mzp_nav_menu_css_class', 'mzp_discard_menu_classes', 10, 2 );
 
 /**
  * Allow the excerpt field to show on pages.
@@ -45,17 +156,44 @@ function mzp_allow_excerpt() {
 add_action( 'init', 'mzp_allow_excerpt' );
 
 /**
- * Overwrite default functionality for byline.
+ * Set number of words to show in the excerpt.
+ *
+ * @param int $length Allowed length of the excerpt.
  */
-function mzp_posted_by() {
-	$byline = sprintf(
-		/* translators: %s: post author. */
-		esc_html_x( 'by %s', 'post author', 'marzeotti-portfolio' ),
-		'<span class="author"><a href="' . esc_url( home_url( '/' ) ) . 'about/">' . esc_html( get_the_author() ) . '</a></span>'
-	);
-
-	echo '<span class="byline"> ' . $byline . '</span>'; // phpcs:ignore
+function mzp_excerpt_length( $length ) {
+	return 30;
 }
+add_filter( 'excerpt_length', 'mzp_excerpt_length', 999 );
+
+/**
+ * Set characters to show after excerpt.
+ *
+ * @param string $more The text to display at the end of a generated excerpt.
+ */
+function mzp_excerpt_more( $more ) {
+	return '...';
+}
+add_filter( 'excerpt_more', 'mzp_excerpt_more' );
+
+/**
+ * Custom template tags for this theme.
+ */
+require get_template_directory() . '/inc/template-tags.php';
+
+/**
+ * Functions which enhance the theme by hooking into WordPress.
+ */
+require get_template_directory() . '/inc/template-functions.php';
+
+/**
+ * Additional custom post types and custom taxonomies.
+ */
+require get_template_directory() . '/inc/post-types-taxonomies.php';
+
+/**
+ * A custom walker class to modify the navigation markup.
+ */
+require get_template_directory() . '/inc/class-marz-walker-nav-menu.php';
 
 /**
  * Add post taxonomies to Archive Content posts.
@@ -170,8 +308,3 @@ function mzp_remove_maps_api_script() {
 	wp_dequeue_script( 'google-maps' );
 }
 add_action( 'wp_print_scripts', 'mzp_remove_maps_api_script', 10 );
-
-/**
- * Custom template tags for this theme.
- */
-// require get_template_directory() . '/inc/template-tags.php';
