@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package Marzeotti_Base
+ * @package Marzeotti_Portfolio
  */
 
 ?>
@@ -20,7 +20,7 @@
 
 		wp_link_pages(
 			array(
-				'before' => '<div>' . esc_html__( 'Pages:', 'marzeotti-base' ),
+				'before' => '<div>' . esc_html__( 'Pages:', 'marzeotti-portfolio' ),
 				'after'  => '</div>',
 			)
 		);

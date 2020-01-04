@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package Marzeotti_Base
+ * @package Marzeotti_Portfolio
  */
 
 ?>
@@ -22,8 +22,8 @@
 			?>
 			<div class="post__meta">
 				<?php
-				marz_posted_on();
-				marz_posted_by();
+				mzp_posted_on();
+				mzp_posted_by();
 				?>
 			</div>
 		<?php endif; ?>
@@ -35,7 +35,7 @@
 			sprintf(
 				wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'marzeotti-base' ),
+					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'marzeotti-portfolio' ),
 					array(
 						'span' => array(
 							'class' => array(),
@@ -48,7 +48,7 @@
 
 		wp_link_pages(
 			array(
-				'before' => '<div>' . esc_html__( 'Pages:', 'marzeotti-base' ),
+				'before' => '<div>' . esc_html__( 'Pages:', 'marzeotti-portfolio' ),
 				'after'  => '</div>',
 			)
 		);

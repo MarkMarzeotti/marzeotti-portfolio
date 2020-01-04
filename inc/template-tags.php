@@ -5,7 +5,7 @@
  * @package Marzeotti_Portfolio
  */
 
- /**
+/**
  * Prints HTML with meta information for the current post-date/time.
  */
 function mzp_posted_on() {
@@ -15,9 +15,9 @@ function mzp_posted_on() {
 		esc_attr( get_the_date( DATE_W3C ) ),
 		esc_html( get_the_date() )
 	);
-	$posted_on = sprintf(
+	$posted_on   = sprintf(
 		/* translators: %s: post date. */
-		esc_html_x( 'Posted on %s', 'post date', 'marzeotti-base' ),
+		esc_html_x( 'Posted on %s', 'post date', 'marzeotti-portfolio' ),
 		$time_string
 	);
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
@@ -27,9 +27,9 @@ function mzp_posted_on() {
 			esc_attr( get_the_modified_date( DATE_W3C ) ),
 			esc_html( get_the_modified_date() )
 		);
-		$posted_on = sprintf(
+		$posted_on   = sprintf(
 			/* translators: %s: post date. */
-			esc_html_x( 'Updated on %s', 'post date', 'marzeotti-base' ),
+			esc_html_x( 'Updated on %s', 'post date', 'marzeotti-portfolio' ),
 			$time_string
 		);
 	}

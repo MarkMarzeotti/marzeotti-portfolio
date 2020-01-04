@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package Marzeotti_Base
+ * @package Marzeotti_Portfolio
  */
 
 ?>
@@ -16,8 +16,8 @@
 		<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="post__meta">
 			<?php
-			marz_posted_on();
-			marz_posted_by();
+			mzp_posted_on();
+			mzp_posted_by();
 			?>
 		</div>
 		<?php endif; ?>

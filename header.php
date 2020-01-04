@@ -45,7 +45,7 @@
 						'menu_id'        => 'primary-menu',
 						'menu_class'     => 'nav__level',
 						'theme_location' => 'primary-menu',
-						'walker'         => new Marz_Walker_Nav_Menu(),
+						'walker'         => new MZP_Walker_Nav_Menu(),
 					)
 				);
 				?>
@@ -59,7 +59,7 @@
 						'depth'          => 1,
 						'menu_class'     => 'nav__level',
 						'theme_location' => 'button-menu',
-						'walker'         => new Marz_Walker_Nav_Menu(),
+						'walker'         => new MZP_Walker_Nav_Menu(),
 					)
 				);
 				?>

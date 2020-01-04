@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
- * @package Marzeotti_Base
+ * @package Marzeotti_Portfolio
  */
 
 get_header();
