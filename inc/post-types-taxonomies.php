@@ -56,6 +56,10 @@ function mzp_register_talk_post_type() {
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 		'capability_type'       => 'page',
+		'rewrite' => array(
+			'slug' => 'talks',
+			'with_front' => false
+		),
 	);
 	register_post_type( 'talk', $args );
 
@@ -113,6 +117,10 @@ function mzp_register_work_post_type() {
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 		'capability_type'       => 'page',
+		'rewrite' => array(
+			'slug' => 'work',
+			'with_front' => false
+		),
 	);
 	register_post_type( 'work', $args );
 

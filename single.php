@@ -49,7 +49,7 @@ get_header();
 						?>
 						<div>
 							<?php
-							marzeotti_base_posted_on();
+							mzp_posted_on();
 							mzp_posted_by();
 							?>
 						</div>
