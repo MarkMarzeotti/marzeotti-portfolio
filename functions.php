@@ -193,7 +193,7 @@ require get_stylesheet_directory() . '/inc/post-types-taxonomies.php';
 /**
  * A custom walker class to modify the navigation markup.
  */
-require get_stylesheet_directory() . '/inc/class-marz-walker-nav-menu.php';
+require get_stylesheet_directory() . '/inc/class-mzp-walker-nav-menu.php';
 
 /**
  * Add post taxonomies to Archive Content posts.
