@@ -1,3 +1,9 @@
+/**
+ * File modals.js.
+ *
+ * Handles all modals on site.
+ */
+
 const tingle = require( 'tingle.js' );
 
 ( function( $ ) {

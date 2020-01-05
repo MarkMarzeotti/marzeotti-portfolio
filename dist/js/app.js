@@ -295,6 +295,12 @@ __webpack_require__(8);
 "use strict";
 
 
+/**
+ * File modals.js.
+ *
+ * Handles all modals on site.
+ */
+
 var tingle = __webpack_require__(7);
 
 (function ($) {
@@ -370,6 +376,12 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;!function(t,o)
 
 "use strict";
 
+
+/**
+ * File maps.js.
+ *
+ * Adds Google Maps API to page after page load.
+ */
 
 (function ($) {
 	$(document).ready(function () {

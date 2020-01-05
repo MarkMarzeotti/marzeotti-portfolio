@@ -105,7 +105,7 @@ add_action( 'after_setup_theme', 'mzp_setup' );
  */
 function mzp_add_google_analytics() {
 	wp_enqueue_script( 'google-analytics', 'https://www.googletagmanager.com/gtag/js?id=UA-84468069-6', array(), '1.0', false );
-	wp_add_inline_script( 'mytheme-typekit', 'window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag(\'js\', new Date());gtag(\'config\', \'UA-84468069-6\');' );
+	wp_add_inline_script( 'google-analytics-inline', 'window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag(\'js\', new Date());gtag(\'config\', \'UA-84468069-6\');' );
 }
 add_action( 'wp_enqueue_scripts', 'mzp_add_google_analytics' );
 

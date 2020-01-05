@@ -1,3 +1,9 @@
+/**
+ * File maps.js.
+ *
+ * Adds Google Maps API to page after page load.
+ */
+
 ( function( $ ) {
 	$( document ).ready( () => {
 
