@@ -104,8 +104,8 @@ add_action( 'after_setup_theme', 'mzp_setup' );
  * Add Google Analytics scripts to the head.
  */
 function mzp_add_google_analytics() {
-	wp_enqueue_script( 'google-analytics', 'https://www.googletagmanager.com/gtag/js?id=UA-00000000-0', array(), '1.0', false );
-	wp_add_inline_script( 'marz-analytics', 'window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag(\'js\', new Date());gtag(\'config\', \'UA-00000000-0\');' );
+	wp_enqueue_script( 'google-analytics', 'https://www.googletagmanager.com/gtag/js?id=UA-84468069-6', array(), '1.0', false );
+	wp_add_inline_script( 'mytheme-typekit', 'window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag(\'js\', new Date());gtag(\'config\', \'UA-84468069-6\');' );
 }
 add_action( 'wp_enqueue_scripts', 'mzp_add_google_analytics' );
 
@@ -113,17 +113,8 @@ add_action( 'wp_enqueue_scripts', 'mzp_add_google_analytics' );
  * Enqueue scripts and styles.
  */
 function mzp_scripts() {
-	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Merriweather:400,700|Roboto:400,400i,700,700i', array(), '1' );
 	wp_enqueue_style( 'marzeotti-portfolio-style', get_stylesheet_directory_uri() . '/dist/css/style.css', array(), wp_get_theme()->get( 'Version' ) );
 	wp_enqueue_script( 'marzeotti-portfolio-script', get_stylesheet_directory_uri() . '/dist/js/app.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true );
-	wp_localize_script(
-		'marzeotti-portfolio-script',
-		'marzeottiBaseGlobal',
-		array(
-			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-			'nonce'   => wp_create_nonce( 'mzp_more_post_ajax_nonce' ),
-		)
-	);
 }
 add_action( 'wp_enqueue_scripts', 'mzp_scripts' );
 
