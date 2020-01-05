@@ -128,6 +128,24 @@ function mzp_admin_scripts() {
 add_action( 'admin_enqueue_scripts', 'mzp_admin_scripts' );
 
 /**
+ * Move jQuery to footer.
+ */
+function mzp_jquery_in_footer() {
+	wp_deregister_script( 'jquery' );
+	wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, '1.12.4', true );
+	wp_enqueue_script( 'jquery' );
+}
+add_action( 'wp_enqueue_scripts', 'mzp_jquery_in_footer' );
+
+/**
+ * Remove plugin provided Maps API script.
+ */
+function mzp_remove_maps_api_script() {
+	wp_dequeue_script( 'google-maps' );
+}
+add_action( 'wp_print_scripts', 'mzp_remove_maps_api_script', 10 );
+
+/**
  * Remove WordPress base menu classes.
  *
  * @param array  $classes An array of classes for this menu item.
@@ -165,26 +183,6 @@ function mzp_excerpt_more( $more ) {
 	return '...';
 }
 add_filter( 'excerpt_more', 'mzp_excerpt_more' );
-
-/**
- * Custom template tags for this theme.
- */
-require get_stylesheet_directory() . '/inc/template-tags.php';
-
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
-require get_stylesheet_directory() . '/inc/template-functions.php';
-
-/**
- * Additional custom post types and custom taxonomies.
- */
-require get_stylesheet_directory() . '/inc/post-types-taxonomies.php';
-
-/**
- * A custom walker class to modify the navigation markup.
- */
-require get_stylesheet_directory() . '/inc/class-mzp-walker-nav-menu.php';
 
 /**
  * Add post taxonomies to Archive Content posts.
@@ -272,16 +270,6 @@ function mzp_modify_archive_content_post_link( $post_permalink ) {
 add_filter( 'archive_content_post_link', 'mzp_modify_archive_content_post_link' );
 
 /**
- * Move jQuery to footer.
- */
-function mzp_jquery_in_footer() {
-	wp_deregister_script( 'jquery' );
-	wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, '1.12.4', true );
-	wp_enqueue_script( 'jquery' );
-}
-add_action( 'wp_enqueue_scripts', 'mzp_jquery_in_footer' );
-
-/**
  * Set allowed redirect locations.
  *
  * @param array $content An array of allowed redirect hosts.
@@ -293,9 +281,21 @@ function mzp_allowed_redirect_hosts( $content ) {
 add_filter( 'allowed_redirect_hosts', 'mzp_allowed_redirect_hosts', 10 );
 
 /**
- * Remove plugin provided Maps API script.
+ * Custom template tags for this theme.
  */
-function mzp_remove_maps_api_script() {
-	wp_dequeue_script( 'google-maps' );
-}
-add_action( 'wp_print_scripts', 'mzp_remove_maps_api_script', 10 );
+require get_stylesheet_directory() . '/inc/template-tags.php';
+
+/**
+ * Functions which enhance the theme by hooking into WordPress.
+ */
+require get_stylesheet_directory() . '/inc/template-functions.php';
+
+/**
+ * Additional custom post types and custom taxonomies.
+ */
+require get_stylesheet_directory() . '/inc/post-types-taxonomies.php';
+
+/**
+ * A custom walker class to modify the navigation markup.
+ */
+require get_stylesheet_directory() . '/inc/class-mzp-walker-nav-menu.php';
