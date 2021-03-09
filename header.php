@@ -16,6 +16,7 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<?php wp_head(); ?>
+	<style><?php the_field( 'additional_inline_css', 'option' ); ?></style>
 </head>
 
 <body <?php body_class(); ?>>

@@ -105,7 +105,7 @@ add_action( 'after_setup_theme', 'mzp_setup' );
  */
 function mzp_scripts() {
 	wp_enqueue_style( 'marzeotti-portfolio-style', get_stylesheet_directory_uri() . '/dist/css/style.css', array(), wp_get_theme()->get( 'Version' ) );
-	wp_enqueue_script( 'marzeotti-portfolio-script', get_stylesheet_directory_uri() . '/dist/js/app.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true );
+	wp_enqueue_script( 'marzeotti-portfolio-script', get_stylesheet_directory_uri() . '/dist/js/app.js', array( 'jquery' ), '2.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'mzp_scripts' );
 
@@ -127,14 +127,6 @@ function mzp_jquery_in_footer() {
 	wp_enqueue_script( 'jquery' );
 }
 add_action( 'wp_enqueue_scripts', 'mzp_jquery_in_footer' );
-
-/**
- * Remove plugin provided Maps API script.
- */
-function mzp_remove_maps_api_script() {
-	wp_dequeue_script( 'google-maps' );
-}
-add_action( 'wp_print_scripts', 'mzp_remove_maps_api_script', 10 );
 
 /**
  * Remove WordPress base menu classes.
@@ -290,3 +282,46 @@ require get_stylesheet_directory() . '/inc/post-types-taxonomies.php';
  * A custom walker class to modify the navigation markup.
  */
 require get_stylesheet_directory() . '/inc/class-mzp-walker-nav-menu.php';
+
+if ( function_exists( 'acf_add_options_page' ) ) {
+	acf_add_options_page();
+}
+
+remove_action( 'wp_head', 'rsd_link' );
+
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
+remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+remove_action( 'admin_print_styles', 'print_emoji_styles' );
+
+remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
+
+function stop_heartbeat() {
+	wp_deregister_script('heartbeat');
+}
+add_action( 'init', 'stop_heartbeat', 1 );
+
+function disable_pingback( &$links ) {
+	foreach ( $links as $l => $link ) {
+		if ( 0 === strpos( $link, get_option( 'home' ) ) ) {
+			unset( $links[$l] );
+		}
+	}
+}
+add_action( 'pre_ping', 'disable_pingback' );
+
+remove_action( 'wp_head', 'wlwmanifest_link' );
+
+add_filter( 'xmlrpc_enabled', '__return_false' );
+
+function disable_embed() {
+	wp_dequeue_script( 'wp-embed' );
+}
+
+add_action( 'wp_footer', 'disable_embed' );
+
+function remove_wp_block_library_css() {
+    wp_dequeue_style( 'wp-block-library' );
+    wp_dequeue_style( 'wp-block-library-theme' );
+}
+add_action( 'wp_print_styles', 'remove_wp_block_library_css', 100 );
